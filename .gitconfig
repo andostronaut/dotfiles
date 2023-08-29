@@ -1,0 +1,9 @@
+[user]
+	name = Ando
+	email = iamando@tuta.io
+[color]
+	ui = auto
+[init]
+	defaultBranch = master
+[pull]
+	rebase = false
