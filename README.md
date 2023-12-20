@@ -30,6 +30,12 @@ Install Deps with Homebrew:
 brew install vim neovim tree-sitter lsd eza git fd ripgrep lazygit lua luajit tree
 ```
 
+If you have already installed vim, create a symbolic link to map directly neovim with vim
+
+```sh
+ln -s $(which nvim) /opt/homebrew/bin/vim
+```
+
 ## License
 
 [MIT licensed](LICENSE).
