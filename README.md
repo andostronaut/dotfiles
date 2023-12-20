@@ -20,7 +20,7 @@ Install Tpm (TMUX Package Manager):
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-Install all plugins in TMUX with command: `Ctrl-A + Ctrl-I`
+Install all plugins in TMUX with command: `Ctrl-a + Shift-i`
 
 ## Setup Neovim
 
