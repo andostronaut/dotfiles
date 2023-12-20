@@ -18,6 +18,10 @@ alias stasheo="git stash"
 alias logeo="git log"
 alias checkouteo="git checkout"
 
+# Dir Aliases
+alias repos="cd ~/Documents/repos"
+alias labs="cd ~/Documents/labs"
+
 # Gnubin
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
@@ -138,3 +142,17 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 # set goroot in shell init
 . ~/.asdf/plugins/golang/set-env.zsh
+
+# ASDF PHP
+export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
+export PATH="/opt/homebrew/opt/jpeg/bin:$PATH"
+export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/andoramanamihanta/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/andoramanamihanta/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/andoramanamihanta/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/andoramanamihanta/google-cloud-sdk/completion.zsh.inc'; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
