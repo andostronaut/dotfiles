@@ -24,8 +24,10 @@ Install all plugins in TMUX with command: `Ctrl-A + Ctrl-I`
 
 ## Setup Neovim
 
+Install Deps with Homebrew:
+
 ```bash
-brew install tmux vim neovim tree-sitter lsd eza git fd ripgrep fish lazygit lua luajit tree
+brew install vim neovim tree-sitter lsd eza git fd ripgrep lazygit lua luajit tree
 ```
 
 ## License
