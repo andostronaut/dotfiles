@@ -8,6 +8,12 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Export brew
+export PATH=/opt/homebrew/bin:$PATH
+
+# Vim alias
+alias vim="nvim"
+
 # Git Aliases
 alias initieo="git init"
 alias commiteo="git commit"
