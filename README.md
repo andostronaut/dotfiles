@@ -27,7 +27,13 @@ Install all plugins in TMUX with command: `Ctrl-a + Shift-i`
 Install Deps with Homebrew:
 
 ```bash
-brew install vim neovim tree-sitter lsd eza git fd ripgrep lazygit lua luajit tree
+brew install vim neovim tree-sitter git fd ripgrep lazygit lua luajit
+```
+
+Optional deps
+
+```sh
+brew install lsd eza tree
 ```
 
 If you have already installed vim, create a symbolic link to map directly neovim with vim
