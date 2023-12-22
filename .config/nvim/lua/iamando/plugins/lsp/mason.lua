@@ -50,6 +50,8 @@ return {
         "rust_analyzer",
         "terraformls",
         "volar",
+        "bashls",
+        "sqlls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -66,10 +68,8 @@ return {
         "autopep8",
         "rubocop",
         "rubyfmt",
-        "fixjson",
         "gofumpt",
         "goimports",
-        "yamlfmt",
         "jsonlint",
         "tflint",
         "yamllint",

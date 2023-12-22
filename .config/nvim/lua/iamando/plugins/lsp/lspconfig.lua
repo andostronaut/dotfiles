@@ -235,5 +235,17 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     })
+
+    -- configure bash server
+    lspconfig["bashls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure sql server
+    lspconfig["sqlls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
   end,
 }
