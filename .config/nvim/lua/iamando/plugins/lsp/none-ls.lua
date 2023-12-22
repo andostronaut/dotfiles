@@ -14,11 +14,18 @@ return {
 
     mason_null_ls.setup({
       ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
-        "black", -- python formatter
-        "pylint", -- python linter
-        "eslint_d", -- js linter
+        "prettier",
+        "stylua",
+        "black",
+        "pylint",
+        "eslint_d",
+        "rubocop",
+        "rubyfmt",
+        "gofumpt",
+        "goimports",
+        "jsonlint",
+        "tflint",
+        "yamllint",
       },
     })
 
@@ -32,21 +39,30 @@ return {
     -- configure null_ls
     null_ls.setup({
       -- add package.json as identifier for root (for typescript monorepos)
-      root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
+      root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json", "deno.json"),
       -- setup formatters & linters
       sources = {
         --  to disable file types use
         --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
+        -- formatters
         formatting.prettier.with({
           extra_filetypes = { "svelte" },
-        }), -- js/ts formatter
-        formatting.stylua, -- lua formatter
+        }),
+        formatting.stylua,
         formatting.isort,
         formatting.black,
+        formatting.rubyfmt,
+        formatting.gofumpt,
+        formatting.goimports,
+        -- linters
+        diagnostics.rubocop,
         diagnostics.pylint,
+        diagnostics.yamllint,
+        diagnostics.jsonlint,
+        diagnostics.tflint,
         diagnostics.eslint_d.with({ -- js/ts linter
           condition = function(utils)
-            return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+            return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs or .eslintrc.json
           end,
         }),
       },

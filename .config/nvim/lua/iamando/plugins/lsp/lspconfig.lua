@@ -157,5 +157,83 @@ return {
         },
       },
     })
+
+    -- configure angular server
+    lspconfig["angularls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure astro server
+    lspconfig["astro"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure dagger server
+    lspconfig["dagger"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure deno server
+    lspconfig["denols"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure docker server
+    lspconfig["dockerls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure golang server
+    lspconfig["degolangci_lint_ls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure helm server
+    lspconfig["helm_ls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure json server
+    lspconfig["jsonls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure python server
+    lspconfig["pylsp"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure ruby server
+    lspconfig["ruby_ls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure rust analyzer server
+    lspconfig["rust_analyzer"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure terraform server
+    lspconfig["terraformls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure vue server
+    lspconfig["volar"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
   end,
 }

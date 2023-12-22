@@ -37,6 +37,19 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "angularls",
+        "astro",
+        "dagger",
+        "denols",
+        "dockerls",
+        "golangci_lint_ls",
+        "helm_ls",
+        "jsonls",
+        "pylsp",
+        "ruby_ls",
+        "rust_analyzer",
+        "terraformls",
+        "volar",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -44,12 +57,22 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint", -- python linter
-        "eslint_d", -- js linter
+        "prettier",
+        "stylua",
+        "isort",
+        "black",
+        "pylint",
+        "eslint_d",
+        "autopep8",
+        "rubocop",
+        "rubyfmt",
+        "fixjson",
+        "gofumpt",
+        "goimports",
+        "yamlfmt",
+        "jsonlint",
+        "tflint",
+        "yamllint",
       },
     })
   end,
