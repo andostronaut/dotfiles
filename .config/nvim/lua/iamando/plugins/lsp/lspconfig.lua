@@ -192,48 +192,56 @@ return {
     lspconfig["golangci_lint_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "go" },
     })
 
     -- configure helm server
     lspconfig["helm_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "helm" },
     })
 
     -- configure json server
     lspconfig["jsonls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "json" },
     })
 
     -- configure python server
     lspconfig["pylsp"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "py" },
     })
 
     -- configure ruby server
     lspconfig["ruby_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "erb", "rb" },
     })
 
     -- configure rust analyzer server
     lspconfig["rust_analyzer"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "rs" },
     })
 
     -- configure terraform server
     lspconfig["terraformls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "tf" },
     })
 
     -- configure vue server
     lspconfig["volar"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "vue" },
     })
 
     -- configure bash server
@@ -246,6 +254,7 @@ return {
     lspconfig["sqlls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "sql" },
     })
   end,
 }
