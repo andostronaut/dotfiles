@@ -76,12 +76,6 @@ return {
       on_attach = on_attach,
     })
 
-    -- configure typescript server with plugin
-    lspconfig["tsserver"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
     -- configure css server
     lspconfig["cssls"].setup({
       capabilities = capabilities,
@@ -176,20 +170,38 @@ return {
       on_attach = on_attach,
     })
 
+    -- configure typescript server
+    lspconfig["tsserver"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
     -- configure deno server
     lspconfig["denols"].setup({
       capabilities = capabilities,
-      on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
+      root_dir = lspconfig.util.root_pattern("deno.json"),
+      init_options = {
+        lint = true,
+        unstable = true,
+        suggest = {
+          imports = {
+            hosts = {
+              ["https://deno.land"] = true,
+              ["https://cdn.nest.land"] = true,
+              ["https://crux.land"] = true,
+            },
+          },
+        },
+      },
+      on_attach = function()
+        local active_clients = vim.lsp.get_active_clients()
 
-        vim.api.nvim_create_autocmd("BufWritePost", {
-          pattern = { "*.js", "*.ts" },
-          callback = function(ctx)
-            if client.name == "denols" then
-              client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-            end
-          end,
-        })
+        for _, client in pairs(active_clients) do
+          -- stop tsserver if denols is already active
+          if client.name == "tsserver" then
+            client.stop()
+          end
+        end
       end,
     })
 
