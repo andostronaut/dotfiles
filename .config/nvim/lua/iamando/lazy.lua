@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { import = "iamando.plugins" }, { import = "iamando.plugins.lsp" } }, {
   install = {
-    colorscheme = { "material" },
+    colorscheme = { "oxocarbon" },
   },
   checker = {
     enabled = true,

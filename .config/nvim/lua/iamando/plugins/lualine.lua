@@ -8,9 +8,38 @@ return {
     -- configure lualine with modified theme
     lualine.setup({
       options = {
-        theme = "material",
+        theme = "oxocarbon",
       },
       sections = {
+        lualine_a = { "mode" },
+        lualine_b = {
+          {
+            "filename",
+            file_status = true,
+            path = 1,
+            color = {
+              bg = "#33186B"
+            },
+          },
+          {
+            "diagnostics",
+            color = {
+              bg = "#7360DF"
+            },
+          },
+          {
+            "branch",
+            color = {
+              bg = "#C499F3"
+            },
+          },
+          {
+            "diff",
+            color = {
+              bg = "#F2AFEF"
+            },
+          },
+        },
         lualine_c = {
           require("lsp-progress").progress,
         },
@@ -18,11 +47,47 @@ return {
           {
             lazy_status.updates,
             cond = lazy_status.has_updates,
-            color = { fg = "#ff9e64" },
+            color = {
+              bg = "#C499F3"
+            },
           },
-          { "encoding" },
-          { "fileformat" },
-          { "filetype" },
+          {
+            "encoding",
+            color = {
+              bg = "#7360DF"
+            },
+          },
+          {
+            "filetype",
+            color = {
+              bg = "#33186B"
+            },
+          },
+        },
+        lualine_y = {
+          {
+            "progress",
+            color = {
+              bg = "#C499F3"
+            },
+          }
+        },
+        lualine_z = {
+          {
+            "location",
+            color = {
+              bg = "#7360DF"
+            },
+          }
+        },
+      },
+      inactive_sections = {
+        lualine_a = {
+          {
+            "filename",
+            file_status = true,
+            path = 1,
+          },
         },
       },
     })
