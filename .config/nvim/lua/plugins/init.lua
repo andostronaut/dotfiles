@@ -120,6 +120,39 @@ local default_plugins = {
     end,
   },
 
+  {
+    "f-person/git-blame.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local git_blame = require("gitblame")
+
+      git_blame.is_blame_text_available() -- Returns a boolean value indicating whether blame message is available
+      git_blame.get_current_blame_text() --  Returns a string with blame message
+    end,
+  },
+
+  {
+    "rbong/vim-flog",
+    init = function()
+      require("core.utils").lazy_load "vim-flog"
+    end,
+    cmd = { "Flog", "Flogsplit", "Floggit" },
+    dependencies = {
+      "tpope/vim-fugitive",
+    },
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    init = function()
+      require("core.utils").lazy_load "diffview.nvim"
+    end,
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewRefresh" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+
   -- lsp stuff
   {
     "williamboman/mason.nvim",
