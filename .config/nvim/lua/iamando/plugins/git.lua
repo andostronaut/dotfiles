@@ -1,4 +1,4 @@
-return {
+return {  
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -24,4 +24,11 @@ return {
       "tpope/vim-fugitive",
     },
   },
+
+  {
+    "sindrets/diffview.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+  }
 }
