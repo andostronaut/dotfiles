@@ -123,13 +123,19 @@ local default_plugins = {
   -- lsp stuff
   {
     "williamboman/mason.nvim",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+    },
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
     opts = function()
       return require "plugins.configs.mason"
     end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "mason")
-      require("mason").setup(opts)
+      require("mason").setup(opts.mason)
+      require("mason-lspconfig").setup(opts.lspconfig)
+      require("mason-tool-installer").setup(opts.tool)
 
       -- custom nvchad cmd to install all mason binaries listed
       vim.api.nvim_create_user_command("MasonInstallAll", function()
