@@ -156,6 +156,17 @@ local default_plugins = {
     end,
   },
 
+  {
+    "linrongbin16/lsp-progress.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    init = function()
+      require("core.utils").lazy_load "lsp-progress.nvim"
+    end,
+    config = function()
+      require("lsp-progress").setup()
+    end,
+  },
+
   -- load luasnips + cmp related in insert mode only
   {
     "hrsh7th/nvim-cmp",
