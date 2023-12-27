@@ -64,4 +64,189 @@ require("lspconfig").lua_ls.setup {
   },
 }
 
+require("lspconfig").lua_ls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+          [vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types"] = true,
+          [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
+        },
+        maxPreload = 100000,
+        preloadFileSize = 10000,
+      },
+    },
+  },
+}
+
+require("lspconfig").html.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+require("lspconfig").cssls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+require("lspconfig").tailwindcss.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+require("lspconfig").svelte.setup {
+  capabilities = M.capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      pattern = { "*.js", "*.ts" },
+      callback = function(ctx)
+        if client.name == "svelte" then
+          client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+        end
+      end,
+    })
+  end,
+}
+
+require("lspconfig").prismals.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "prisma" },
+}
+
+require("lspconfig").graphql.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+}
+
+require("lspconfig").emmet_ls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+}
+
+require("lspconfig").pyright.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+require("lspconfig").angularls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+require("lspconfig").astro.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+require("lspconfig").tsserver.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+require("lspconfig").denols.setup {
+  capabilities = M.capabilities,
+  root_dir = require("lspconfig").util.root_pattern("deno.json"),
+  init_options = {
+    lint = true,
+    unstable = true,
+    suggest = {
+      imports = {
+        hosts = {
+          ["https://deno.land"] = true,
+          ["https://cdn.nest.land"] = true,
+          ["https://crux.land"] = true,
+        },
+      },
+    },
+  },
+  on_attach = function()
+    local active_clients = vim.lsp.get_active_clients()
+
+    for _, client in pairs(active_clients) do
+      -- stop tsserver if denols is already active
+      if client.name == "tsserver" then
+        client.stop()
+      end
+    end
+  end,
+}
+
+require("lspconfig").dockerls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+require("lspconfig").golangci_lint_ls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "go" },
+}
+
+require("lspconfig").helm_ls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "helm" },
+}
+
+require("lspconfig").jsonls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "json" },
+}
+
+require("lspconfig").pylsp.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "py" },
+}
+
+require("lspconfig").ruby_ls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "erb", "rb" },
+}
+
+require("lspconfig").rust_analyzer.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "rs" },
+}
+
+require("lspconfig").terraformls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "tf" },
+}
+
+require("lspconfig").volar.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "vue" },
+}
+
+
+require("lspconfig").bashls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+require("lspconfig").sqlls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "sql" },
+}
+
 return M
