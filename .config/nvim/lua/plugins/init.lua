@@ -214,25 +214,6 @@ local default_plugins = {
 
   -- configure formatters & linters
   {
-    "nvimtools/none-ls.nvim",
-    init = function()
-      require("core.utils").lazy_load "none-ls.nvim"
-    end,
-    dependencies = {
-      "jay-babu/mason-null-ls.nvim",
-    },
-    opts = function()
-      return require "plugins.configs.null_ls"
-    end,
-    config = function(_, opts)
-      local mason_null_ls = require("mason-null-ls")
-      mason_null_ls.setup(opts.tool)
-
-      opts.setup_null_ls()
-    end,
-  },
-
-  {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
     init = function()
