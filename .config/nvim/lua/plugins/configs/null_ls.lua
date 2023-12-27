@@ -53,7 +53,7 @@ M.setup_null_ls = function()
     diagnostics.pylint,
     diagnostics.yamllint,
     diagnostics.jsonlint,
-    diagnostics.tflint,
+    -- diagnostics.tflint, -- comment for now, need to solve later
     diagnostics.eslint_d.with({ -- js/ts linter
       condition = function(utils)
           return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs or .eslintrc.json
