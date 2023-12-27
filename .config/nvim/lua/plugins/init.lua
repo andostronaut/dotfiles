@@ -225,6 +225,34 @@ local default_plugins = {
     end,
   },
 
+  {
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+    init = function()
+      require("core.utils").lazy_load "conform.nvim"
+    end,
+    opts = function()
+      return require "plugins.configs.others"
+    end,
+    config = function(_, opts)
+      opts.setup_formatting()
+    end,
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+    init = function()
+      require("core.utils").lazy_load "nvim-lint"
+    end,
+    opts = function()
+      return require "plugins.configs.others"
+    end,
+    config = function(_, opts)
+      opts.setup_linting()
+    end,
+  },
+
   -- load luasnips + cmp related in insert mode only
   {
     "hrsh7th/nvim-cmp",
