@@ -64,29 +64,6 @@ require("lspconfig").lua_ls.setup {
   },
 }
 
-require("lspconfig").lua_ls.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-          [vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types"] = true,
-          [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
-      },
-    },
-  },
-}
-
 require("lspconfig").html.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
@@ -121,7 +98,6 @@ require("lspconfig").svelte.setup {
 require("lspconfig").prismals.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "prisma" },
 }
 
 require("lspconfig").graphql.setup {
@@ -216,7 +192,7 @@ require("lspconfig").pylsp.setup {
 require("lspconfig").ruby_ls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "erb", "rb" },
+  filetypes = { "rb" },
 }
 
 require("lspconfig").rust_analyzer.setup {
@@ -228,7 +204,6 @@ require("lspconfig").rust_analyzer.setup {
 require("lspconfig").terraformls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "tf" },
 }
 
 require("lspconfig").volar.setup {
@@ -236,7 +211,6 @@ require("lspconfig").volar.setup {
   capabilities = M.capabilities,
   filetypes = { "vue" },
 }
-
 
 require("lspconfig").bashls.setup {
   on_attach = M.on_attach,

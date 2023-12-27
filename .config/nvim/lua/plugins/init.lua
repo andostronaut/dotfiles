@@ -50,6 +50,13 @@ local default_plugins = {
   },
 
   {
+    "HiPhish/rainbow-delimiters.nvim",
+    init = function()
+      require("core.utils").lazy_load "rainbow-delimiters.nvim"
+    end,
+  },
+
+  {
     "nvim-tree/nvim-web-devicons",
     opts = function()
       return { override = require "nvchad.icons.devicons" }
@@ -177,10 +184,10 @@ local default_plugins = {
 
       -- custom nvchad cmd to install all mason binaries listed
       vim.api.nvim_create_user_command("MasonInstallAll", function()
-        vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+        vim.cmd("MasonInstall " .. table.concat(opts.mason.ensure_installed, " "))
       end, {})
 
-      vim.g.mason_binaries_list = opts.ensure_installed
+      vim.g.mason_binaries_list = opts.lspconfig.ensure_installed
     end,
   },
 

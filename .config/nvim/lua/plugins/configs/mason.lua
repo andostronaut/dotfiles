@@ -2,7 +2,10 @@ local options = {
   mason = {
     ensure_installed = {
       "lua-language-server",
-    }, -- not an option from mason.nvim
+      "prisma-language-server",
+      "typescript-language-server",
+      "terraform-ls",
+    },
     PATH = "skip",
     ui = {
       icons = {
