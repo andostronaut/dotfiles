@@ -232,6 +232,11 @@ local default_plugins = {
   },
 
   {
+    "sigmasd/deno-nvim",
+    cmd = { "Deno", "DenoReloadImportRegistries", "DenoStatus", "DenoTask" },
+  },
+
+  {
     "neovim/nvim-lspconfig",
     init = function()
       require("core.utils").lazy_load "nvim-lspconfig"
