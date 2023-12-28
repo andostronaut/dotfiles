@@ -101,6 +101,12 @@ local default_plugins = {
 
   -- git stuff
   {
+		"dinhhuy258/git.nvim",
+		event = "BufReadPre",
+    cmd = { "Git", "GitBlame", "GitDiff", "GitDiffClose", "GitCreatePullRequest", "GitRevert", "GitRevertFile" },
+	},
+
+  {
     "lewis6991/gitsigns.nvim",
     ft = { "gitcommit", "diff" },
     init = function()
