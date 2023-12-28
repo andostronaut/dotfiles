@@ -29,6 +29,13 @@ local default_plugins = {
     end,
   },
 
+  -- Load conf
+  {
+    "folke/neoconf.nvim",
+    cmd = "Neoconf",
+    config = true,
+  },
+
   {
     "NvChad/nvim-colorizer.lua",
     init = function()
