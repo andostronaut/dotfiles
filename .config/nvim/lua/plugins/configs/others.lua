@@ -73,6 +73,7 @@ M.setup_formatting = function()
       javascriptreact = { "prettier" },
       typescriptreact = { "prettier" },
       svelte = { "prettier" },
+      vue = { "prettier" },
       css = { "prettier" },
       html = { "prettier" },
       json = { "prettier" },
@@ -104,15 +105,16 @@ M.setup_linting = function()
   local lint = require("lint")
 
   lint.linters_by_ft = {
-    javascript = { "eslint_d" },
-    typescript = { "eslint_d" },
+    javascript = { utils.get_ts_js_linter() },
+    typescript = { utils.get_ts_js_linter() },
     javascriptreact = { "eslint_d" },
     typescriptreact = { "eslint_d" },
     svelte = { "eslint_d" },
-    python = { "pylint", "autopep8" },
+    vue = { "eslint_d" },
+    python = { "pylint" },
     json = { "jsonlint" },
     yaml = { "yamllint" },
-    terraform = { "tflint" },
+    terraform = { "tfsec" },
     ruby = { "rubocop" },
   }
 
