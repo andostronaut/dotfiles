@@ -42,7 +42,6 @@ local options = {
       "angularls",
       "astro",
       "dockerls",
-      "golangci_lint_ls",
       "helm_ls",
       "jsonls",
       "pylsp",

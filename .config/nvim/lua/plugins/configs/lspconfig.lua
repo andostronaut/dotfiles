@@ -151,12 +151,6 @@ require("lspconfig").dockerls.setup {
   capabilities = M.capabilities,
 }
 
-require("lspconfig").golangci_lint_ls.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-  filetypes = { "go" },
-}
-
 require("lspconfig").helm_ls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
