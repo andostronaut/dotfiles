@@ -154,31 +154,26 @@ require("lspconfig").dockerls.setup {
 require("lspconfig").helm_ls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "helm" },
 }
 
 require("lspconfig").jsonls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "json" },
 }
 
 require("lspconfig").pylsp.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "py" },
 }
 
 require("lspconfig").ruby_ls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "rb" },
 }
 
 require("lspconfig").rust_analyzer.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "rs" },
 }
 
 require("lspconfig").terraformls.setup {
@@ -189,7 +184,6 @@ require("lspconfig").terraformls.setup {
 require("lspconfig").volar.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "vue" },
 }
 
 require("lspconfig").bashls.setup {
@@ -200,7 +194,6 @@ require("lspconfig").bashls.setup {
 require("lspconfig").sqlls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "sql" },
 }
 
 require("lspconfig").gopls.setup {
