@@ -51,6 +51,7 @@ local options = {
       "volar",
       "bashls",
       "sqlls",
+      "gopls",
     },
     -- auto-install configured servers (with lspconfig)
     automatic_installation = true, -- not the same as ensure_installed
@@ -72,7 +73,7 @@ local options = {
       "tfsec",
       "yamllint",
     },
-  }
+  },
 }
 
 return options

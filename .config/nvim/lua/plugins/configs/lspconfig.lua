@@ -133,7 +133,7 @@ require("lspconfig").tsserver.setup {
 require("deno-nvim").setup {
   server = {
     capabilities = M.capabilities,
-    root_dir = require("lspconfig").util.root_pattern("deno.json"),
+    root_dir = require("lspconfig").util.root_pattern "deno.json",
     on_attach = function()
       local active_clients = vim.lsp.get_active_clients()
 
@@ -201,6 +201,11 @@ require("lspconfig").sqlls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
   filetypes = { "sql" },
+}
+
+require("lspconfig").gopls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
 }
 
 return M
