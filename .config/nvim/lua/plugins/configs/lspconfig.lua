@@ -161,9 +161,25 @@ require("lspconfig").jsonls.setup {
   capabilities = M.capabilities,
 }
 
-require("lspconfig").pylsp.setup {
+require("lspconfig").pyright.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
+  single_file_support = true,
+  settings = {
+    pyright = {
+      disableLanguageServices = false,
+      disableOrganizeImports = false,
+    },
+    python = {
+      analysis = {
+        autoImportCompletions = true,
+        autoSearchPaths = true,
+        diagnosticMode = "workspace", -- openFilesOnly, workspace
+        typeCheckingMode = "basic", -- off, basic, strict
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
 }
 
 require("lspconfig").ruby_ls.setup {
