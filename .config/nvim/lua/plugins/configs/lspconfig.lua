@@ -174,6 +174,16 @@ require("lspconfig").ruby_ls.setup {
 require("lspconfig").rust_analyzer.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      check = {
+        command = "clippy",
+      },
+      diagnostics = {
+        enable = true,
+      },
+    },
+  },
 }
 
 require("lspconfig").terraformls.setup {
