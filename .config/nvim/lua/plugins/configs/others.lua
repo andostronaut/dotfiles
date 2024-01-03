@@ -64,9 +64,9 @@ M.gitsigns = {
 }
 
 M.setup_formatting = function()
-  local conform = require("conform")
+  local conform = require "conform"
 
-  conform.setup({
+  conform.setup {
     formatters_by_ft = {
       javascript = { "prettier" },
       typescript = { "prettier" },
@@ -90,19 +90,19 @@ M.setup_formatting = function()
       async = false,
       timeout_ms = 1000,
     },
-  })
+  }
 
   vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-    conform.format({
+    conform.format {
       lsp_fallback = true,
       async = false,
       timeout_ms = 1000,
-    })
+    }
   end, { desc = "Format file or range (in visual mode)" })
 end
 
 M.setup_linting = function()
-  local lint = require("lint")
+  local lint = require "lint"
 
   lint.linters_by_ft = {
     javascript = { utils.get_ts_js_linter() },
@@ -111,7 +111,7 @@ M.setup_linting = function()
     typescriptreact = { "eslint_d" },
     svelte = { "eslint_d" },
     vue = { "eslint_d" },
-    python = { "pylint" },
+    python = { "pylama" },
     json = { "jsonlint" },
     yaml = { "yamllint" },
     terraform = { "tfsec" },
