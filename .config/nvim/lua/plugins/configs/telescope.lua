@@ -58,6 +58,12 @@ local options = {
       case_mode = "smart_case",
     },
   },
+
+  pickers = {
+    find_files = {
+      hidden = true,
+    },
+  },
 }
 
 return options
