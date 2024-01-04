@@ -60,4 +60,4 @@ rd -r ~\AppData\Local\nvim-data
 
 ## License
 
-[MIT licensed](LICENSE).
+[MIT](LICENSE).
