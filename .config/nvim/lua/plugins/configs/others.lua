@@ -114,7 +114,7 @@ M.setup_linting = function()
     python = { "pylama" },
     json = { "jsonlint" },
     yaml = { "yamllint" },
-    terraform = { "tfsec" },
+    terraform = { "tflint" },
     ruby = { "rubocop" },
   }
 

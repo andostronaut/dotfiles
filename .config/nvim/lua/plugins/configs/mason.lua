@@ -70,7 +70,7 @@ local options = {
       "gofumpt",
       "goimports",
       "jsonlint",
-      "tfsec",
+      "tflint",
       "yamllint",
     },
   },
