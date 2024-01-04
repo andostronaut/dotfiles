@@ -6,24 +6,6 @@
   />
 </p>
 
-## Install
-
-```sh
-git clone https://github.com/iamando/dotfiles.git ~/.config/nvim
-```
-
-## Uninstall
-
-```sh
-# Linux / Macos (unix)
-rm -rf ~/.config/nvim
-rm -rf ~/.local/share/nvim
-
-# Windows
-rd -r ~\AppData\Local\nvim
-rd -r ~\AppData\Local\nvim-data
-```
-
 ## Setup TMUX
 
 Install TMUX with Homebrew:
@@ -63,6 +45,18 @@ ln -s $(which nvim) /opt/homebrew/bin/vim
 ### Setup Go on Neovim
 
 Install binaries on running this command `GoInstallBinaries`
+
+## Uninstall nvim
+
+```sh
+# Linux / Macos (unix)
+rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
+
+# Windows
+rd -r ~\AppData\Local\nvim
+rd -r ~\AppData\Local\nvim-data
+```
 
 ## License
 
