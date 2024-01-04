@@ -90,7 +90,6 @@ local default_plugins = {
     end,
   },
 
-
   -- treesitter stuff
   {
     "nvim-treesitter/nvim-treesitter",
@@ -119,7 +118,7 @@ local default_plugins = {
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts.treesitter_textobjects)
 
-      local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+      local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 
       -- vim way: ; goes to the direction you were moving.
       vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
@@ -135,10 +134,10 @@ local default_plugins = {
 
   -- git stuff
   {
-		"dinhhuy258/git.nvim",
-		event = "BufReadPre",
+    "dinhhuy258/git.nvim",
+    event = "BufReadPre",
     cmd = { "Git", "GitBlame", "GitDiff", "GitDiffClose", "GitCreatePullRequest", "GitRevert", "GitRevertFile" },
-	},
+  },
 
   {
     "lewis6991/gitsigns.nvim",
@@ -148,18 +147,16 @@ local default_plugins = {
       vim.api.nvim_create_autocmd({ "BufRead" }, {
         group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
         callback = function()
-          vim.fn.jobstart({"git", "-C", vim.loop.cwd(), "rev-parse"},
-            {
-              on_exit = function(_, return_code)
-                if return_code == 0 then
-                  vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
-                  vim.schedule(function()
-                    require("lazy").load { plugins = { "gitsigns.nvim" } }
-                  end)
-                end
+          vim.fn.jobstart({ "git", "-C", vim.loop.cwd(), "rev-parse" }, {
+            on_exit = function(_, return_code)
+              if return_code == 0 then
+                vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
+                vim.schedule(function()
+                  require("lazy").load { plugins = { "gitsigns.nvim" } }
+                end)
               end
-            }
-          )
+            end,
+          })
         end,
       })
     end,
@@ -176,7 +173,7 @@ local default_plugins = {
     "f-person/git-blame.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-      local git_blame = require("gitblame")
+      local git_blame = require "gitblame"
 
       git_blame.is_blame_text_available() -- Returns a boolean value indicating whether blame message is available
       git_blame.get_current_blame_text() --  Returns a string with blame message
@@ -422,17 +419,50 @@ local default_plugins = {
   {
     "rmagatti/auto-session",
     config = function()
-      local auto_session = require("auto-session")
+      local auto_session = require "auto-session"
 
-      auto_session.setup({
+      auto_session.setup {
         auto_restore_enabled = false,
         auto_session_suppress_dirs = { "~/", "~/Downloads", "~/Documents", "~/Desktop/" },
-      })
+      }
 
       local keymap = vim.keymap
 
       keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
       keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
+    end,
+  },
+
+  -- notify
+  {
+    "folke/noice.nvim",
+    init = function()
+      require("core.utils").lazy_load "noice.nvim"
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    opts = {
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+      },
+      presets = {
+        bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
+        long_message_to_split = true, -- long messages will be sent to a split
+        inc_rename = false, -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false, -- add a border to hover docs and signature help
+      },
+    },
+    config = function(self, opts)
+      require("noice").setup(opts)
+
+      vim.notify = require("noice").notify
     end,
   },
 }
