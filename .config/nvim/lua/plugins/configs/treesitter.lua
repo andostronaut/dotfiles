@@ -49,6 +49,7 @@ local options = {
       "requirements",
       "hcl",
       "regex",
+      "templ",
     },
 
     highlight = {
