@@ -82,3 +82,6 @@ if [ -f '/Users/andoramanamihanta/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 if [ -f '/Users/andoramanamihanta/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/andoramanamihanta/google-cloud-sdk/completion.zsh.inc'; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Source Cargo Env
+source "$HOME/.cargo/env"
