@@ -159,23 +159,23 @@ require("lspconfig").helm_ls.setup {
 require("lspconfig").yamlls.setup {
   capabilities = M.capabilities,
   on_attach = function(client, bufnr)
-    vim.filetype.add({
+    vim.filetype.add {
       extension = {
         yaml = utils.yaml_filetype,
         yml = utils.yaml_filetype,
         tmpl = utils.tmpl_filetype,
-        tpl = utils.tpl_filetype
+        tpl = utils.tpl_filetype,
       },
       filename = {
         ["Chart.yaml"] = "yaml",
         ["Chart.lock"] = "yaml",
-      }
-    })
+      },
+    }
 
     if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
       vim.diagnostic.disable()
     end
-  end
+  end,
 }
 
 require("lspconfig").templ.setup {
@@ -250,6 +250,11 @@ require("lspconfig").sqlls.setup {
 }
 
 require("lspconfig").gopls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+require("lspconfig").phpactor.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }
