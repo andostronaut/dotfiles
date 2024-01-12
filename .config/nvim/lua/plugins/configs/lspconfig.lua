@@ -254,7 +254,7 @@ require("lspconfig").gopls.setup {
   capabilities = M.capabilities,
 }
 
-require("lspconfig").phpactor.setup {
+require("lspconfig").intelephense.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }

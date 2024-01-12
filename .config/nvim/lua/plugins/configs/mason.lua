@@ -1,11 +1,6 @@
 local options = {
   mason = {
-    ensure_installed = {
-      "lua-language-server",
-      "prisma-language-server",
-      "typescript-language-server",
-      "terraform-ls",
-    },
+    ensure_installed = {},
     PATH = "skip",
     ui = {
       icons = {
@@ -54,6 +49,7 @@ local options = {
       "gopls",
       "yamlls",
       "templ",
+      "intelephense",
     },
     -- auto-install configured servers (with lspconfig)
     automatic_installation = true, -- not the same as ensure_installed
@@ -74,6 +70,8 @@ local options = {
       "jsonlint",
       "tflint",
       "yamllint",
+      "php-cs-fixer",
+      "phpcs",
     },
   },
 }

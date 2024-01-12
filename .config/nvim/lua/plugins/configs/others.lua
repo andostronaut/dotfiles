@@ -84,6 +84,7 @@ M.setup_formatting = function()
       python = { "isort", "black" },
       ruby = { "rubyfmt" },
       go = { "gofumpt", "goimports" },
+      php = { "php-cs-fixer" },
     },
     format_on_save = {
       lsp_fallback = true,
@@ -116,6 +117,7 @@ M.setup_linting = function()
     yaml = { "yamllint" },
     terraform = { "tflint" },
     ruby = { "rubocop" },
+    php = { "phpcs" },
   }
 
   local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
