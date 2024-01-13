@@ -77,6 +77,14 @@ require("lspconfig").cssls.setup {
 require("lspconfig").tailwindcss.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
+  root_dir = require("lspconfig").util.root_pattern(
+    "tailwind.config.cjs",
+    "tailwind.config.js",
+    "tailwind.config.ts",
+    "postcss.config.cjs",
+    "postcss.config.js",
+    "postcss.config.ts"
+  ),
 }
 
 require("lspconfig").svelte.setup {
