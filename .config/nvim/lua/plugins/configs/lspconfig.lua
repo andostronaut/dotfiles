@@ -118,11 +118,6 @@ require("lspconfig").emmet_ls.setup {
   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 }
 
-require("lspconfig").pyright.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-}
-
 require("lspconfig").angularls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
@@ -217,7 +212,7 @@ require("lspconfig").pyright.setup {
   },
 }
 
-require("lspconfig").ruby_ls.setup {
+require("lspconfig").solargraph.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }
