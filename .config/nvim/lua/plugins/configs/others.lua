@@ -117,7 +117,7 @@ M.setup_linting = function()
     yaml = { "yamllint" },
     terraform = { "tflint" },
     ruby = { "rubocop" },
-    php = { "phpcs" },
+    php = { "phpcs", "phpstan" },
   }
 
   local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

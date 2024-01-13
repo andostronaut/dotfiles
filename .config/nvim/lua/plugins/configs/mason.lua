@@ -72,6 +72,7 @@ local options = {
       "yamllint",
       "php-cs-fixer",
       "phpcs",
+      "phpstan",
     },
   },
 }
