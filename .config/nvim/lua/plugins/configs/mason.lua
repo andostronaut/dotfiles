@@ -40,7 +40,6 @@ local options = {
       "helm_ls",
       "jsonls",
       "pyright",
-      "ruby_ls",
       "rust_analyzer",
       "terraformls",
       "volar",
@@ -50,6 +49,7 @@ local options = {
       "yamlls",
       "templ",
       "intelephense",
+      "solargraph",
     },
     -- auto-install configured servers (with lspconfig)
     automatic_installation = true, -- not the same as ensure_installed
