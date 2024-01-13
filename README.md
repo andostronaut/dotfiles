@@ -6,6 +6,14 @@
   />
 </p>
 
+## Configure NVIM Config
+
+Go to the repo directory and use symlink for nvim config
+
+```sh
+ln -s $(pwd)/.config/nvim ~/.config
+```
+
 ## Setup TMUX
 
 Install TMUX with Homebrew:
