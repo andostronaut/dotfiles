@@ -82,6 +82,7 @@ M.setup_formatting = function()
       graphql = { "prettier" },
       lua = { "stylua" },
       python = { "isort", "black" },
+      rust = { "rustfmt" },
       ruby = { "rubyfmt" },
       go = { "gofumpt", "goimports" },
       php = { "php-cs-fixer" },
