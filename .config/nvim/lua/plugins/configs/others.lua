@@ -116,7 +116,6 @@ M.setup_linting = function()
     json = { "jsonlint" },
     yaml = { "yamllint" },
     terraform = { "tflint" },
-    ruby = { "rubocop" },
     php = { "phpcs", "phpstan" },
   }
 
