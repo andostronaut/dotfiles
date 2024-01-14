@@ -16,6 +16,10 @@ ln -s $(pwd)/.config/nvim ~/.config
 
 ## Setup TMUX
 
+### Relevant Files
+
+- [.tmux.conf](.tmux.conf)
+
 Install TMUX with Homebrew:
 
 ```sh
