@@ -4,9 +4,6 @@
 	ignorecase = false
 [init]
 	defaultBranch = master
-[user]
-	name = Ando
-	email = iamando@tuta.io
 [pull]
 	rebase = false
 [push]
