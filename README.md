@@ -32,10 +32,30 @@ Install all plugins in TMUX with command: `Ctrl-a + Shift-i`
 
 ## Setup Neovim
 
+### Relevant Files
+
+- [.config/nvim](.config/nvim)
+
+### Setup Requires
+
+- True Color Terminal Like: [iTerm2](https://iterm2.com/)
+- [Neovim](https://neovim.io/) (Version 0.9 or Later)
+- [Nerd Font](https://www.nerdfonts.com/) - I use Meslo Nerd Font
+- [Ripgrep](https://github.com/BurntSushi/ripgrep) - For Telescope Fuzzy Finder
+- XCode Command Line Tools
+
 Install Deps with Homebrew:
 
+```sh
+brew install --cask iterm2
+
+brew install node vim neovim tree-sitter git fd ripgrep lazygit lua luajit
+```
+
+For XCode Command Line Tools do:
+
 ```bash
-brew install vim neovim tree-sitter git fd ripgrep lazygit lua luajit
+xcode-select --install
 ```
 
 Optional deps
