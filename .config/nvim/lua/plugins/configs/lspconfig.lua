@@ -215,6 +215,18 @@ require("lspconfig").pyright.setup {
 require("lspconfig").solargraph.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
+  settings = {
+    solargraph = {
+      diagnostics = true,
+      completion = true,
+      flags = {
+        debounce_text_changes = 150,
+      },
+      initializationOptions = {
+        formatting = true,
+      },
+    },
+  },
 }
 
 require("lspconfig").rust_analyzer.setup {
