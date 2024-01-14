@@ -63,6 +63,7 @@ local options = {
       "black",
       "pylama",
       "eslint_d",
+      "rustfmt",
       "rubyfmt",
       "gofumpt",
       "goimports",
