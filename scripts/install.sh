@@ -5,13 +5,14 @@ dotfiles=(
   .zshrc
   .vimrc
   .gitconfig
+  .config
 )
 
 dotfiles_dir="$HOME/.dotfiles"
 
 backup_existing_dotfiles() {
   backup_dir="$HOME/.dotfiles_backup/$(date +"%Y%m%d%H%M%S")"
-  
+
   mkdir -p "$backup_dir"
 
   for dotfile in "${dotfiles[@]}"; do
