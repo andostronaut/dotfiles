@@ -74,6 +74,14 @@ If you have already installed vim, create a symbolic link to map directly neovim
 ln -s $(which nvim) /opt/homebrew/bin/vim
 ```
 
+## Setup Terminalizer
+
+Install Terminalizer from NPM
+
+```sh
+npm install -g terminalizer
+```
+
 ### Setup Go on Neovim
 
 Install binaries on running this command `GoInstallBinaries`
