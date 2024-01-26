@@ -12,6 +12,7 @@ Go to the repo directory and use symlink for nvim config
 
 ```sh
 ln -s $(pwd)/.config/nvim ~/.config
+ln -s $(pwd)/.config/terminalizer ~/.config
 ```
 
 ## Setup TMUX
