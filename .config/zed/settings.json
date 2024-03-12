@@ -1,0 +1,26 @@
+// Zed settings
+{
+  "vim_mode": false,
+  "autosave": "on_focus_change",
+
+  "theme": "Andromeda",
+  "ui_font_size": 15,
+  "soft_wrap": "editor_width",
+  "tab_size": 2,
+
+  "buffer_font_size": 13,
+  "buffer_font_family": "Cascadia Code",
+
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  "terminal": {
+    "font_family": "MesloLGS NF"
+  },
+
+  "project_panel": {
+    "folder_icons": false
+  }
+}
