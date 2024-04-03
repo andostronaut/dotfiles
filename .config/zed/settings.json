@@ -1,9 +1,19 @@
 // Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
 {
   "vim_mode": false,
   "autosave": "on_focus_change",
 
-  "theme": "Andromeda",
+  "theme": {
+    "light": "One Light",
+    "dark": "Ayu Dark"
+  },
   "ui_font_size": 15,
   "soft_wrap": "editor_width",
   "tab_size": 2,
@@ -22,5 +32,7 @@
 
   "project_panel": {
     "folder_icons": false
-  }
+  },
+
+  "auto_update": false
 }
