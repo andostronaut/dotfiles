@@ -27,7 +27,7 @@ ln -s $(pwd)/.config/zed ~/.config
 
 ## Configure VSCode
 
-Copy settings from zed [settings](.config/vscode/settings.json) to VSCode Settings
+Copy settings from vscode [settings](.config/vscode/settings.json) to VSCode Settings
 
 Install all extensions that we needed with this command
 
