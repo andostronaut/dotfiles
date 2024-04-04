@@ -1,0 +1,13 @@
+{
+  "workbench.startupEditor": "none",
+  "totalTypeScript.hideAllTips": false,
+  "totalTypeScript.hideBasicTips": false,
+  "workbench.preferredDarkColorTheme": "Ayu Dark",
+  "workbench.preferredLightColorTheme": "Atom One Light",
+  "workbench.preferredHighContrastLightColorTheme": "Atom One Light",
+  "workbench.preferredHighContrastColorTheme": "Atom One Light",
+  "workbench.settings.applyToAllProfiles": [],
+  "workbench.colorTheme": "Atom One Light",
+  "settingsSync.ignoredSettings": ["workbench.colorTheme"],
+  "window.autoDetectColorScheme": true
+}
