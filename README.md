@@ -25,6 +25,16 @@ Or, using symlink to link directly the folder to your config
 ln -s $(pwd)/.config/zed ~/.config
 ```
 
+## Configure VSCode
+
+Copy settings from zed [settings](.config/vscode/settings.json) to VSCode Settings
+
+Install all extensions that we needed with this command
+
+```sh
+cat .config/vscode/extensions.list | xargs -L 1 code --install-extension
+```
+
 ## Setup TMUX
 
 ### Relevant Files
