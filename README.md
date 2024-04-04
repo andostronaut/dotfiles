@@ -15,6 +15,16 @@ ln -s $(pwd)/.config/nvim ~/.config
 ln -s $(pwd)/.config/terminalizer ~/.config
 ```
 
+## Configure Zed
+
+Copy settings from zed [settings](.config/zed/settings.json) to .config/zed/settings.json
+
+Or, using symlink to link directly the folder to your config
+
+```sh
+ln -s $(pwd)/.config/zed ~/.config
+```
+
 ## Setup TMUX
 
 ### Relevant Files
