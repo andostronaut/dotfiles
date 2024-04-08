@@ -27,6 +27,12 @@ ln -s $(pwd)/.config/zed ~/.config
 
 ## Configure VSCode
 
+Install VSCode from [here](https://code.visualstudio.com/) or using brew command for mac
+
+```sh
+brew install --cask visual-studio-code
+```
+
 Copy settings from vscode [settings](.config/vscode/settings.json) to VSCode Settings
 
 Install all extensions that we needed with this command
