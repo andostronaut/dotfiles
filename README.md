@@ -15,6 +15,14 @@ ln -s $(pwd)/.config/nvim ~/.config
 ln -s $(pwd)/.config/terminalizer ~/.config
 ```
 
+## Setup Homebrew
+
+Install homebrew as Package Manager for mac to able to use brew command, check the documentation [here](https://brew.sh/)
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 ## Configure Zed
 
 Copy settings from zed [settings](.config/zed/settings.json) to .config/zed/settings.json
