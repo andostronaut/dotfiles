@@ -23,6 +23,12 @@ Install homebrew as Package Manager for mac to able to use brew command, check t
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+Install brew bundle command
+
+```sh
+brew tap Homebrew/bundle
+```
+
 ## Configure Zed
 
 Copy settings from zed [settings](.config/zed/settings.json) to .config/zed/settings.json
