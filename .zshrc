@@ -82,6 +82,9 @@ if [ -f '/Users/andoramanamihanta/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 if [ -f '/Users/andoramanamihanta/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/andoramanamihanta/google-cloud-sdk/completion.zsh.inc'; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
+# To use fzf in Vim, add the following line to your .vimrc:
+# set rtp+=/opt/homebrew/opt/fzf
 
 # Source Cargo Env
 source "$HOME/.cargo/env"
