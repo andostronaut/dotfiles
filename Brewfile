@@ -51,6 +51,7 @@ brew "coreutils"
 brew "fzf"
 brew "git"
 brew "helm"
+brew "git-town"
 
 cask_args appdir: "/Applications"
 cask "arc"
