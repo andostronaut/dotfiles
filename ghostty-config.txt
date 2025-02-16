@@ -1,0 +1,4 @@
+theme = oxocarbon
+window-save-state = always
+macos-icon = glass
+font-size = 12
