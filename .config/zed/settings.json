@@ -1,22 +1,25 @@
 {
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
-    },
-    "version": "2"
-  },
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  },
-  "ui_font_size": 14,
-  "buffer_font_size": 12,
-  "theme": "Oxocarbon Dark (Variant I)",
-  "soft_wrap": "editor_width",
-  "tab_size": 2,
-  "auto_update": false,
-  "restore_on_startup": "none",
-  "autosave": "on_focus_change",
-  "git_status": true
+	"assistant": {
+		"default_model": {
+			"provider": "zed.dev",
+			"model": "claude-3-5-sonnet-latest"
+		},
+		"version": "2"
+	},
+	"telemetry": {
+		"diagnostics": false,
+		"metrics": false
+	},
+	"ui_font_size": 14,
+	"buffer_font_size": 12,
+	"theme": "Oxocarbon Dark (Variant I)",
+	"soft_wrap": "editor_width",
+	"tab_size": 2,
+	"auto_update": false,
+	"restore_on_startup": "none",
+	"autosave": "on_focus_change",
+	"git_status": true,
+	"terminal": {
+		"dock": "right"
+	}
 }
