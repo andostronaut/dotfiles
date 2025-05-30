@@ -1,13 +1,61 @@
 {
+  "files.associations": {
+    ".env*": "dotenv"
+  },
+
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredDarkColorTheme": "oxocarbon-5",
+  "workbench.preferredLightColorTheme": "oxocarbon-5 light",
+  "workbench.iconTheme": "vs-seti",
+  "workbench.productIconTheme": "Default",
+  "workbench.activityBar.location": "top",
+
+  "editor.fontSize": 12,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": true,
+
+  "editor.formatOnSave": true,
+  "files.autoSave": "onFocusChange",
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 120,
+  "editor.tabSize": 2,
+  "editor.hover.enabled": true,
+  "editor.inlineSuggest.enabled": true,
+
   "workbench.startupEditor": "none",
-  "totalTypeScript.hideAllTips": false,
-  "totalTypeScript.hideBasicTips": false,
-  "workbench.preferredDarkColorTheme": "Ayu Dark",
-  "workbench.preferredLightColorTheme": "Atom One Light",
-  "workbench.preferredHighContrastLightColorTheme": "Atom One Light",
-  "workbench.preferredHighContrastColorTheme": "Atom One Light",
-  "workbench.settings.applyToAllProfiles": [],
-  "workbench.colorTheme": "Atom One Light",
-  "settingsSync.ignoredSettings": ["workbench.colorTheme"],
-  "window.autoDetectColorScheme": true
+
+  "terminal.integrated.defaultLocation": "editor",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Propo",
+  "terminal.integrated.cursorStyle": "line",
+
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "dotenv": false,
+    "node_modules": false,
+    "dist": false,
+    "build": false,
+    "target": false,
+    ".git": false,
+    ".vscode": false,
+    ".idea": false,
+    "*.pem": false,
+    "*.key": false,
+    "*.cert": false,
+    "*.crt": false,
+    "secrets.yml": false
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.advanced": {
+    "indentationMode": true
+  },
+
+  "chat.agent.enabled": true,
+
+  "update.mode": "manual",
+  "window.restoreWindows": "none",
+  "git.enabled": true,
+  "window.confirmBeforeClose": "always",
+
+  "telemetry.telemetryLevel": "off"
 }

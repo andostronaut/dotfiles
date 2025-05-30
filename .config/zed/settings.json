@@ -1,38 +1,91 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run the `open default settings` command
-// from the command palette or from `Zed` application menu.
 {
-  "vim_mode": false,
-  "autosave": "on_focus_change",
-
-  "theme": {
-    "light": "One Light",
-    "dark": "Ayu Dark"
+  "icon_theme": {
+    "mode": "system",
+    "light": "Colored Zed Icons Theme Light",
+    "dark": "Colored Zed Icons Theme Dark"
   },
-  "ui_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "Oxocarbon Light (Variation II)",
+    "dark": "Oxocarbon Dark (Variant II)"
+  },
+  "window.autoDetectColorScheme": true,
+
+  "ui_font_size": 14,
+  "buffer_font_size": 12,
+  "editor.font_family": "JetBrains Mono",
+  "editor.font_ligatures": true,
+  "ui.font_family": "JetBrains Mono",
+
   "soft_wrap": "editor_width",
   "tab_size": 2,
+  "autosave": "on_focus_change",
+  "format_on_save": "on",
+  "hover_popover_enabled": true,
 
-  "buffer_font_size": 13,
-  "buffer_font_family": "Cascadia Code",
+  "terminal": {
+    "dock": "bottom",
+    "font_family": "JetBrainsMono Nerd Font Propo",
+    "cursor_shape": "bar"
+  },
+
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
+    },
+    "version": "2",
+    "enabled": true,
+    "inline_alternatives": [
+      {
+        "provider": "zed.dev",
+        "model": "claude-3-7-sonnet"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-3-7-sonnet"
+      }
+    ]
+  },
+  "edit_predictions": {
+    "disabled_globs": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/target/**",
+      "**/.git/**",
+      "**/.vscode/**",
+      "**/.idea",
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.cert",
+      "**/*.crt",
+      "**/secrets.yml"
+    ],
+    "mode": "eager"
+  },
+
+  "lsp": {
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    },
+    "eslint": {
+      "settings": {
+        "require_config_file": true
+      }
+    }
+  },
+
+  "auto_update": false,
+  "restore_on_startup": "none",
+  "git_status": true,
+  "confirm_quit": true,
 
   "telemetry": {
     "diagnostics": false,
     "metrics": false
-  },
-
-  "terminal": {
-    "font_family": "MesloLGS NF"
-  },
-
-  "project_panel": {
-    "folder_icons": false
-  },
-
-  "auto_update": false
+  }
 }
