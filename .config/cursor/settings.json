@@ -1,0 +1,129 @@
+{
+    // Common
+    "files.associations": {
+      ".env*": "dotenv"
+    },
+    "files.autoSave": "onFocusChange",
+  
+    // Git
+    "git.enabled": true,
+    "git.autofetch": true,
+  
+    // Window
+    "window.autoDetectColorScheme": true,
+    "window.restoreWindows": "none",
+    "window.confirmBeforeClose": "always",
+    "window.newWindowProfile": "Default",
+    "window.nativeTabs": true,
+  
+    // Editor Behavior
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120,
+    "editor.tabSize": 2,
+    "editor.hover.enabled": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.fontSize": 12,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": true,
+  
+    // Workbench Settings
+    "workbench.startupEditor": "none",
+    "workbench.productIconTheme": "Default",
+    "workbench.activityBar.location": "top",
+  
+    // Terminal Configuration
+    "terminal.integrated.defaultLocation": "editor",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Propo",
+    "terminal.integrated.cursorStyle": "line",
+  
+    // Application Behavior
+    "update.mode": "manual",
+  
+    // Privacy Settings
+    "telemetry.telemetryLevel": "off",
+  
+    // Typescript Settings
+    "typescript.inlayHints.parameterNames.enabled": "all",
+    "workbench.iconTheme": "bearded-icons",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "database-client.autoSync": true,
+    "dbcode.connections": [
+      {
+        "connectionId": "kYj9JboCmphSIBdA2j5Un",
+        "name": "PostegreSQL",
+        "driver": "postgres",
+        "connectionType": "host",
+        "host": "127.0.0.1",
+        "port": 5432,
+        "ssl": false,
+        "username": "mine",
+        "password": "",
+        "savePassword": "secretStorage",
+        "database": "mine",
+        "readOnly": false,
+        "connectionTimeout": 30,
+        "group": "Mine"
+      },
+      {
+        "connectionId": "xfJGwsvBI1Q5PvB918OaK",
+        "name": "DragonFly",
+        "driver": "redis",
+        "connectionType": "host",
+        "host": "127.0.0.1",
+        "port": 6379,
+        "ssl": false,
+        "username": "default",
+        "savePassword": "secretStorage",
+        "readOnly": false,
+        "connectionTimeout": 30,
+        "group": "Mine"
+      },
+      {
+        "connectionId": "YaqxNUz5kNTWHPoLV00TM",
+        "name": "OpenSign",
+        "driver": "mongodb",
+        "connectionType": "host",
+        "driverOptions": {
+          "protocol": "mongodb://"
+        },
+        "host": "localhost",
+        "port": 27018,
+        "ssl": false,
+        "savePassword": "secretStorage",
+        "readOnly": false,
+        "connectionTimeout": 30
+      }
+    ],
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "telemetry.feedback.enabled": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "svelte.enable-ts-plugin": true,
+    "[svelte]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "docker.extension.enableComposeLanguageServer": false,
+    "workbench.preferredDarkColorTheme": "Bearded Theme OLED (Experimental)",
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "security.promptForLocalFileProtocolHandling": false,
+    "json.schemas": []
+  }
