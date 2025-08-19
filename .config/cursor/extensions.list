@@ -28,6 +28,7 @@ oven.bun-vscode
 prisma.prisma
 redhat.vscode-yaml
 rust-lang.rust-analyzer
+supabase.postgrestools
 svelte.svelte-vscode
 unifiedjs.vscode-mdx
 vue.volar
