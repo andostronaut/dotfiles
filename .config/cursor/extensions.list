@@ -15,8 +15,6 @@ ecmel.vscode-html-css
 editorconfig.editorconfig
 esbenp.prettier-vscode
 expo.vscode-expo-tools
-github.vscode-github-actions
-github.vscode-pull-request-github
 golang.go
 hashicorp.hcl
 mhutchie.git-graph
