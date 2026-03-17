@@ -1,13 +1,13 @@
 aaron-bond.better-comments
 angular.ng-template
+anthropic.claude-code
 anysphere.cursorpyright
-astro-build.astro-vscode
 beardedbear.beardedicons
 beardedbear.beardedtheme
+biomejs.biome
 bradlc.vscode-tailwindcss
 davidanson.vscode-markdownlint
 dbaeumer.vscode-eslint
-dbcode.dbcode
 denoland.vscode-deno
 docker.docker
 dsznajder.es7-react-js-snippets
@@ -26,7 +26,6 @@ oven.bun-vscode
 prisma.prisma
 redhat.vscode-yaml
 rust-lang.rust-analyzer
-supabase.postgrestools
 svelte.svelte-vscode
 unifiedjs.vscode-mdx
 vue.volar
