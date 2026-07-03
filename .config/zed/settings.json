@@ -1,31 +1,61 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "debugger": {
-    "dock": "left",
-  },
+  "disable_ai": false,
   "project_panel": {
-    "dock": "left",
+    "git_status_indicator": true,
+    "dock": "right",
+    "default_width": 300,
     "folder_icons": true,
   },
   "outline_panel": {
-    "dock": "left",
+    "dock": "right",
+    "default_width": 300,
   },
   "collaboration_panel": {
     "dock": "right",
+    "default_width": 300,
+  },
+  "git_panel": {
+    "dock": "right",
+    "default_width": 300,
   },
   "agent": {
-    "sidebar_side": "right",
-    "dock": "right",
+    "expand_edit_card": false,
+    "expand_terminal_card": false,
+    "flexible": true,
+    "play_sound_when_agent_done": "always",
+    "sidebar_side": "left",
+    "dock": "left",
     "favorite_models": [],
     "model_parameters": [],
   },
-  "git_panel": {
+  "terminal": {
+    "flexible": true,
+    "dock": "left",
+    "font_family": "JetBrainsMono Nerd Font Propo",
+  },
+  "debugger": {
     "dock": "left",
   },
   "proxy": "",
-  "agent_servers": {},
-  "terminal": {
-    "dock": "bottom",
-    "font_family": "JetBrainsMono Nerd Font Propo",
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+    "claude-acp": {
+      "default_config_options": {
+        "model": "opus[1m]",
+        "effort": "max",
+      },
+      "type": "registry",
+    },
   },
   "base_keymap": "VSCode",
   "telemetry": {
