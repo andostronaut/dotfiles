@@ -75,6 +75,31 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 Install all plugins in TMUX with command: `Ctrl-a + Shift-i`
 
+## Configure Herdr
+
+[Herdr](https://herdr.dev/) is a mouse-first, agent-aware terminal multiplexer.
+
+### Relevant Files
+
+- [.config/herdr/config.toml](.config/herdr/config.toml)
+
+Install Herdr with Homebrew:
+
+```sh
+brew install herdr
+```
+
+Symlink the config file into place (herdr keeps its logs, sockets, and
+`session.json` in `~/.config/herdr`, so symlink just the file, not the folder):
+
+```sh
+mkdir -p ~/.config/herdr
+ln -sf $(pwd)/.config/herdr/config.toml ~/.config/herdr/config.toml
+```
+
+Reload a running server after edits with `prefix+shift+r`, or print the full
+commented defaults with `herdr --default-config`.
+
 ## Setup Neovim
 
 ### Relevant Files

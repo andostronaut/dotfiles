@@ -1,0 +1,121 @@
+# herdr — agent multiplexer for the terminal
+# Docs:      https://herdr.dev/docs/
+# Reference: https://herdr.dev/docs/config-reference/
+#
+# Installed location: ~/.config/herdr/config.toml
+# Symlink just this file (herdr keeps logs, sockets, and session.json in that
+# same dir, so don't symlink the whole directory):
+#   ln -sf $(pwd)/.config/herdr/config.toml ~/.config/herdr/config.toml
+#
+# herdr runs fine with no config — everything below is optional and set to a
+# sensible value with the default noted in a comment. Reload a running server
+# after edits with `prefix+shift+r` or `herdr server reload-config`.
+# Print the full commented defaults anytime with `herdr --default-config`.
+
+# Show first-run onboarding. Set false once you've completed setup.
+# (Top-level key — must stay above the [table] sections below.)
+onboarding = false
+
+# ── Theme ────────────────────────────────────────────────────────────────────
+[theme]
+# Built-in names include: kanagawa, catppuccin, catppuccin-latte, tokyo-night,
+# nord, dracula, and "terminal" (follow your host terminal's ANSI palette).
+# Full list: search theme.name in the config reference.
+name = "kanagawa"
+
+# Follow the host terminal's light/dark appearance and swap theme automatically.
+# When enabled, herdr uses light_name / dark_name (or the theme's built-in
+# light/dark sibling if those are unset). Manual selection in Settings disables it.
+auto_switch = false
+# light_name = "catppuccin-latte"
+# dark_name  = "catppuccin"
+
+# Override individual color tokens on top of the base theme (hex / named / rgb()).
+# [theme.custom]
+# accent = "#89b4fa"
+
+# ── Terminal ─────────────────────────────────────────────────────────────────
+[terminal]
+default_shell = ""        # "" = use $SHELL, then /bin/sh
+shell_mode    = "auto"    # auto | login | non_login
+new_cwd       = "follow"  # follow | home | current | path — where new panes/tabs open
+
+# ── Updates ──────────────────────────────────────────────────────────────────
+[update]
+channel        = "stable" # stable | preview
+version_check  = true     # background check for new herdr versions
+manifest_check = true     # background check for agent-detection manifest updates
+
+# ── Keybindings ──────────────────────────────────────────────────────────────
+# Only override what you want to change; unlisted keys keep their defaults.
+[keys]
+prefix = "ctrl+b"         # default. Set "ctrl+a" if you want tmux muscle memory.
+# A few common ones shown for reference (all at their defaults):
+# split_vertical   = "prefix+v"       # side by side
+# split_horizontal = "prefix+minus"   # stacked
+# new_tab          = "prefix+c"
+# zoom             = "prefix+z"
+# toggle_sidebar   = "prefix+b"
+# reload_config    = "prefix+shift+r"
+# new_worktree     = "prefix+shift+g"
+
+# ── UI & sidebar ─────────────────────────────────────────────────────────────
+[ui]
+sidebar_width          = 40        # default/target; auto-scales to workspace-name length
+sidebar_min_width      = 40        # floor (default 18). Raise this to force a wider sidebar
+                                   # even with short names; min == width == max pins it fixed.
+sidebar_max_width      = 40        # ceiling (default 36)
+sidebar_collapsed_mode = "compact" # compact | hidden
+mouse_capture          = true      # herdr is mouse-first; keep this on
+copy_on_select         = true
+confirm_close          = true
+pane_borders           = true
+pane_gaps              = true
+accent                 = "cyan"    # hex, named color, or rgb()
+agent_panel_sort       = "spaces"  # spaces | priority — Agent sidebar ordering
+show_agent_labels_on_pane_borders = true # label split panes with the detected agent
+
+# ── Notifications ────────────────────────────────────────────────────────────
+# Great when you run background AI agents: get pinged when one finishes or needs
+# input. delivery: off | herdr (in-app toast) | terminal | system (OS notifier).
+[ui.toast]
+delivery      = "herdr"
+delay_seconds = 1                  # 0–3600; only fires if still in that state after the delay
+
+[ui.toast.clipboard]
+enabled = true                     # show the "copied" popup after a mouse copy
+
+# ── Sound ────────────────────────────────────────────────────────────────────
+[ui.sound]
+enabled = true                     # chime when a background agent changes state
+# path         = "~/.config/herdr/sounds/ping.mp3"  # override all sounds
+# done_path    = "~/.config/herdr/sounds/done.mp3"
+# request_path = "~/.config/herdr/sounds/request.mp3"
+
+# Per-agent overrides: default | on | off
+[ui.sound.agents]
+claude = "default"
+codex  = "default"
+# droid defaults to off
+
+# ── Session ──────────────────────────────────────────────────────────────────
+[session]
+resume_agents_on_restore = true    # resume AI-agent panes into their native sessions on restore
+
+# ── Worktrees ────────────────────────────────────────────────────────────────
+[worktrees]
+directory = "~/.herdr/worktrees"   # root for <repo>/<branch-slug> checkouts
+
+# ── Remote ───────────────────────────────────────────────────────────────────
+[remote]
+manage_ssh_config = true           # add keepalive + connection reuse for `herdr --remote`
+
+# ── Advanced ─────────────────────────────────────────────────────────────────
+[advanced]
+scrollback_limit_bytes = 10000000  # per-pane scrollback cap (~10 MB)
+
+# ── Experimental ─────────────────────────────────────────────────────────────
+[experimental]
+allow_nested   = false             # allow launching herdr inside a herdr pane
+kitty_graphics = false             # experimental Kitty graphics for attached clients
+pane_history   = false             # persist pane screen history to session-history.json
