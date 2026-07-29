@@ -14,11 +14,14 @@ M.base46 = {
 	-- },
 }
 
--- M.nvdash = { load_on_startup = true }
--- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
--- }
+-- the dashboard NvChad shows in its screenshots, off in the starter by default
+M.nvdash = { load_on_startup = true }
+
+M.ui = {
+	-- show the buffer tabline immediately instead of waiting for a 2nd buffer
+	tabufline = {
+		lazyload = false,
+	},
+}
 
 return M
