@@ -42,7 +42,9 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 # # Theme
-theme = dark:Builtin Dark,light:Builtin Light
+theme = dark:GitHub Dark Default,light:GitHub Light Default
 window-save-state = always
-font-size = 12
 macos-icon=xray
+
+# Merge the tab bar into the titlebar (one row instead of two)
+macos-titlebar-style = tabs
