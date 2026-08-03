@@ -38,6 +38,10 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
 
 source $ZSH/oh-my-zsh.sh
 
+# Terminal/tab title: just the current folder, not user@host:path
+ZSH_THEME_TERM_TITLE_IDLE="%1~"
+ZSH_THEME_TERM_TAB_TITLE_IDLE="%1~"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
