@@ -79,12 +79,6 @@ export GOPATH=$(asdf where golang)/packages
 export GOROOT=$(asdf where golang)/go
 export PATH="${PATH}:$(go env GOPATH)/bin"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/andoramanamihanta/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/andoramanamihanta/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/andoramanamihanta/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/andoramanamihanta/google-cloud-sdk/completion.zsh.inc'; fi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(fzf --zsh)"
 # To use fzf in Vim, add the following line to your .vimrc:
