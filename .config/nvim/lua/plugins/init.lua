@@ -156,11 +156,20 @@ return {
 
   -- git ----------------------------------------------------------------------
 
+  -- git.nvim and fugitive both define :Git, and git.nvim's setup() creates it
+  -- unconditionally, so whichever loads last wins. Load git.nvim first at high
+  -- priority and let fugitive's command! land on top of it. :Git is fugitive,
+  -- git.nvim keeps its Git-prefixed commands.
   {
     "dinhhuy258/git.nvim",
-    event = "BufReadPre",
-    cmd = { "Git", "GitBlame", "GitDiff", "GitDiffClose", "GitCreatePullRequest", "GitRevert", "GitRevertFile" },
+    lazy = false,
+    priority = 1000,
     opts = {},
+  },
+
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
   },
 
   {
