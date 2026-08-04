@@ -72,11 +72,13 @@ command = "herdr plugin pane open --plugin gecm.agents-usage --entrypoint usage"
 description = "Agents Usage: provider usage modal"
 
 # usagebar registers real plugin actions, so those bind directly.
+# usagebar's own open-limits action hardcodes --direction right, so call the
+# CLI directly to get a split below instead.
 [[keys.command]]
 key = "prefix+shift+u"
-type = "plugin_action"
-command = "usagebar.open-limits"
-description = "Agent Usage: open limits pane"
+type = "shell"
+command = "herdr plugin pane open --plugin usagebar --entrypoint limits --placement split --direction down --focus"
+description = "Agent Usage: open limits pane below"
 
 [[keys.command]]
 key = "prefix+shift+m"
