@@ -26,6 +26,12 @@ map("n", "<leader>gs", gs "stage_hunk", { desc = "git stage hunk" })
 map("n", "<leader>gr", gs "reset_hunk", { desc = "git reset hunk" })
 map("n", "<leader>gb", gs("blame_line", { full = true }), { desc = "git blame line" })
 map("n", "<leader>gv", gs "diffthis", { desc = "git diff this file vs index" })
+map("n", "<leader>ga", gs "blame", { desc = "git blame whole file" })
+
+-- persistent inline blame, git-blame.nvim starts disabled
+map("n", "<leader>gB", "<cmd>GitBlameToggle<cr>", { desc = "git blame inline toggle" })
+map("n", "<leader>gu", "<cmd>GitBlameOpenCommitURL<cr>", { desc = "git blame open commit url" })
+map("n", "<leader>gy", "<cmd>GitBlameCopySHA<cr>", { desc = "git blame copy commit sha" })
 
 -- file and repo level, diffview
 map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "git diff working tree" })

@@ -166,7 +166,13 @@ return {
   {
     "f-person/git-blame.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    opts = { enabled = false }, -- toggle with :GitBlameToggle
+    opts = {
+      enabled = false, -- toggle with <leader>gB
+      -- %c is a full C-locale timestamp, way too long for end of line
+      date_format = "%r", -- relative, "3 days ago"
+      message_template = "  <author> • <date> • <summary>",
+      message_when_not_committed = "  uncommitted",
+    },
   },
 
   {
