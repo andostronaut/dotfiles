@@ -201,6 +201,18 @@ return {
 
   -- ui -----------------------------------------------------------------------
 
+  -- inline images, rendered through the kitty graphics protocol which ghostty
+  -- speaks. Needs the imagemagick CLI on PATH. Only the image module is turned
+  -- on, the rest of snacks stays dormant.
+  {
+    "folke/snacks.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      image = { enabled = true },
+    },
+  },
+
   -- nvim-tree hides gitignored paths by default (filters.git_ignored = true),
   -- which swallows node_modules, .env, dist, and friends. Show everything.
   {
