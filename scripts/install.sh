@@ -12,6 +12,19 @@ set -uo pipefail
 #   whole directory  the repo owns every file under it, one symlink is enough
 #   single file      the app also stores plugins/locks/logs there, so linking
 #                    the directory would hide them
+#
+# This only links config. Restoring the rest of a machine:
+#
+#   brew bundle --file Brewfile     packages, including imagemagick which
+#                                   snacks.nvim needs to render images
+#   herdr-lazy sync                 herdr plugins, from the tracked
+#                                   plugins.list at the commits in plugins.lock
+#
+# `herdr-lazy sync` builds plugins from source, and several are Rust. herdr-lazy
+# and herdr-sidebar need edition 2024, so rustup's stable toolchain must be
+# 1.85 or newer — an older one fails with "feature `edition2024` is required":
+#
+#   rustup update stable
 
 # resolve the repo root from this script's own location, so the repo works
 # wherever it is cloned rather than only at ~/.dotfiles
@@ -169,6 +182,10 @@ main() {
   if [ "$backed_up" -gt 0 ] && ! $dry_run; then
     echo "backups in: $backup_dir"
   fi
+
+  echo
+  echo "config only. next: brew bundle --file Brewfile, then herdr-lazy sync"
+  echo "(herdr-lazy sync builds Rust plugins, needs rustup stable >= 1.85)"
 }
 
 main "$@"
