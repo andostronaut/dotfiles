@@ -182,6 +182,37 @@ return {
 
   -- ui -----------------------------------------------------------------------
 
+  -- nvim-tree hides gitignored paths by default (filters.git_ignored = true),
+  -- which swallows node_modules, .env, dist, and friends. Show everything.
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      filters = {
+        git_ignored = false,
+        dotfiles = false,
+      },
+    },
+  },
+
+  -- telescope shells out to fd/rg, which skip hidden files and honour
+  -- .gitignore. Same deal, show everything.
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+      defaults = {
+        file_ignore_patterns = {},
+      },
+      pickers = {
+        find_files = { hidden = true, no_ignore = true },
+        live_grep = {
+          additional_args = function()
+            return { "--hidden", "--no-ignore" }
+          end,
+        },
+      },
+    },
+  },
+
   {
     "NvChad/nvim-colorizer.lua",
     event = { "BufReadPost", "BufNewFile" },
