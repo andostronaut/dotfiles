@@ -61,6 +61,29 @@ prefix = "ctrl+space"     # default is ctrl+b. herdr has no key-sequence syntax,
 # reload_config    = "prefix+shift+r"
 # new_worktree     = "prefix+shift+g"
 
+# ── Plugin keybindings ───────────────────────────────────────────────────────
+# gecm.agents-usage exposes its modal as a pane entrypoint rather than an
+# action, so it goes through the CLI. Inside the modal, r refreshes and any
+# other key closes it.
+[[keys.command]]
+key = "prefix+u"
+type = "shell"
+command = "herdr plugin pane open --plugin gecm.agents-usage --entrypoint usage"
+description = "Agents Usage: provider usage modal"
+
+# usagebar registers real plugin actions, so those bind directly.
+[[keys.command]]
+key = "prefix+shift+u"
+type = "plugin_action"
+command = "usagebar.open-limits"
+description = "Agent Usage: open limits pane"
+
+[[keys.command]]
+key = "prefix+shift+m"
+type = "plugin_action"
+command = "usagebar.refresh"
+description = "Agent Usage: refresh sidebar meters"
+
 # ── UI & sidebar ─────────────────────────────────────────────────────────────
 [ui]
 sidebar_width          = 40        # default/target; auto-scales to workspace-name length
@@ -76,6 +99,21 @@ pane_gaps              = true
 accent                 = "cyan"    # hex, named color, or rgb()
 agent_panel_sort       = "spaces"  # spaces | priority — Agent sidebar ordering
 show_agent_labels_on_pane_borders = true # label split panes with the detected agent
+
+# Agent rows in the sidebar. $-tokens are pane metadata published by the
+# usagebar plugin, the rest are herdr built-ins. This replaces herdr's default
+# rows of [["state_icon", "workspace", "tab"], ["agent"]] — $title stands in for
+# workspace/tab, and the two extra rows are what the plugin adds:
+#   $provider  subscription provider, or backend for pay-as-you-go panes
+#   $limit     shortest limit window remaining, e.g. "5h 72%"
+#   $context   per-pane context use, e.g. "⛁ 13% (130k)"
+[ui.sidebar.agents]
+row_gap = 0                          # 1 restores the old blank line between agents
+rows = [
+  ["state_icon", "$title"],
+  ["$provider", "$limit"],
+  ["$context"],
+]
 
 # ── Notifications ────────────────────────────────────────────────────────────
 # Great when you run background AI agents: get pinged when one finishes or needs
