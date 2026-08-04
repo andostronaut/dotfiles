@@ -24,6 +24,10 @@ space typed in a pane would trigger it instead of inserting a space.
 | `prefix` `d` | open the token dashboard (own tab) | dave.token-dashboard |
 | `prefix` `f` | toggle the file explorer sidebar | herdr-sidebar |
 | `prefix` `shift+s` | toggle source control | herdr-sidebar |
+| `prefix` `shift+b` | PR board, every space by PR state | jmarbutt.spaces-pr-status |
+| `prefix` `shift+o` | open this space's pull request | jmarbutt.spaces-pr-status |
+| `prefix` `shift+c` | this space's checks | jmarbutt.spaces-pr-status |
+| `prefix` `shift+y` | re-query GitHub, ignore caches | jmarbutt.spaces-pr-status |
 
 ## Why two binding types
 
@@ -59,6 +63,23 @@ prefix+w  prefix+x      prefix+z
 
 Worth remembering: `prefix+l` is `focus_pane_right` and `prefix+shift+t` is
 taken, which is why the manage pane and dashboard ended up on `shift+l` and `d`.
+
+## Plugins with a background poller
+
+`jmarbutt.spaces-pr-status` (and mergr before it) run a daemon started by a
+`[[startup]]` manifest hook. herdr only runs those when the **server** starts,
+so a plugin installed into a running server sits dead until the next restart —
+its sidebar tokens stay blank and it looks broken when it is not.
+
+Start one by hand without restarting:
+
+```sh
+cd ~/.config/herdr/plugins/github/<plugin-dir> && node bin/startup.js
+herdr api snapshot     # tokens land on the space within a few seconds
+```
+
+spaces-pr-status also self-heals on `worktree.created`. Its tokens expire after
+four poll intervals by design, so a blank `$pr` means no data rather than no PR.
 
 ## Applying changes
 
