@@ -50,7 +50,8 @@ manifest_check = true     # background check for agent-detection manifest update
 # ── Keybindings ──────────────────────────────────────────────────────────────
 # Only override what you want to change; unlisted keys keep their defaults.
 [keys]
-prefix = "ctrl+b"         # default. Set "ctrl+a" if you want tmux muscle memory.
+prefix = "ctrl+space"     # default is ctrl+b. herdr has no key-sequence syntax,
+                          # so a double-tap prefix is not possible.
 # A few common ones shown for reference (all at their defaults):
 # split_vertical   = "prefix+v"       # side by side
 # split_horizontal = "prefix+minus"   # stacked
