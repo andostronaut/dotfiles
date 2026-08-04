@@ -42,7 +42,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 # # Theme
-theme = dark:GitHub Dark Default,light:GitHub Light Default
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 window-save-state = always
 macos-icon=xray
 

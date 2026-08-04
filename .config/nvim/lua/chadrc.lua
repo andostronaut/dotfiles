@@ -6,8 +6,8 @@
 local M = {}
 
 M.base46 = {
-	theme = "github_dark",
-	theme_toggle = { "github_dark", "github_light" },
+	theme = "catppuccin",
+	theme_toggle = { "catppuccin", "catppuccin-latte" },
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },

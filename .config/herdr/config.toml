@@ -21,14 +21,14 @@ onboarding = false
 # Built-in names include: kanagawa, catppuccin, catppuccin-latte, tokyo-night,
 # nord, dracula, and "terminal" (follow your host terminal's ANSI palette).
 # Full list: search theme.name in the config reference.
-name = "kanagawa"
+name = "catppuccin"
 
 # Follow the host terminal's light/dark appearance and swap theme automatically.
 # When enabled, herdr uses light_name / dark_name (or the theme's built-in
 # light/dark sibling if those are unset). Manual selection in Settings disables it.
-auto_switch = false
-# light_name = "catppuccin-latte"
-# dark_name  = "catppuccin"
+auto_switch = true
+light_name = "catppuccin-latte"
+dark_name  = "catppuccin"
 
 # Override individual color tokens on top of the base theme (hex / named / rgb()).
 # [theme.custom]
