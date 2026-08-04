@@ -118,7 +118,6 @@ return {
         "python",
         "regex",
         "requirements",
-        "ruby",
         "rust",
         "scss",
         "solidity",

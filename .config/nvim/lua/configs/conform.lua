@@ -11,7 +11,6 @@ local options = {
     markdown = { "prettier" },
     php = { "php_cs_fixer" },
     python = { "isort", "black" },
-    ruby = { "rubyfmt" },
     rust = { "rustfmt" },
     svelte = { "prettier" },
     typescript = { "prettier" },

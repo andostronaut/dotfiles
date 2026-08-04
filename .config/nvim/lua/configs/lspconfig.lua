@@ -68,18 +68,6 @@ vim.lsp.config("pyright", {
   },
 })
 
-vim.lsp.config("solargraph", {
-  settings = {
-    solargraph = {
-      diagnostics = true,
-      completion = true,
-      initializationOptions = {
-        formatting = true,
-      },
-    },
-  },
-})
-
 vim.lsp.config("rust_analyzer", {
   settings = {
     ["rust-analyzer"] = {
