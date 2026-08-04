@@ -164,7 +164,11 @@ return {
     "dinhhuy258/git.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      -- git.nvim's defaults claim <Leader>gb/gd/gD/gp/gr, all of which
+      -- mappings.lua points at gitsigns and diffview instead
+      default_mappings = false,
+    },
   },
 
   {
