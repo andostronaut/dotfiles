@@ -42,9 +42,14 @@ config_dirs=(
   zed
 )
 
-# herdr keeps .plugins.lock, logs and installed plugins in the same directory
+# herdr keeps .plugins.lock, logs and installed plugins in the same directory,
+# and every plugin's own config dir lives under herdr/plugins/config
 config_files=(
   herdr/config.toml
+  # herdr-lazy's declarative plugin set and its lockfile, the record of which
+  # plugins to reinstall and at which commits
+  herdr/plugins/config/herdr-lazy/plugins.list
+  herdr/plugins/config/herdr-lazy/plugins.lock
 )
 
 # .gitignore and .versions belong to the repo itself and are deliberately not
