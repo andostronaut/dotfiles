@@ -22,6 +22,8 @@ space typed in a pane would trigger it instead of inserting a space.
 | `prefix` `shift+v` | toggle the review pane | persiyanov.reviewr |
 | `prefix` `shift+l` | open the plugin manage pane | herdr-lazy |
 | `prefix` `d` | open the token dashboard (own tab) | dave.token-dashboard |
+| `prefix` `f` | toggle the file explorer sidebar | herdr-sidebar |
+| `prefix` `shift+s` | toggle source control | herdr-sidebar |
 
 ## Why two binding types
 
@@ -29,6 +31,10 @@ space typed in a pane would trigger it instead of inserting a space.
 ids with `herdr plugin action list` — they rarely match the repo name
 (`senna-lang/herdr-agent-usage` registers as `usagebar`,
 `Davidcreador/herdr-token-dashboard` as `dave.token-dashboard`).
+
+Plugins that support Windows register `-windows` variants of the same action.
+Bind the plain id on macOS: herdr accepts the wrong one in the config and only
+refuses it at the keypress, so it reads as a key that silently does nothing.
 
 `type = "shell"` calls the herdr CLI directly, used where an action would not
 do what we want:

@@ -108,6 +108,20 @@ type = "plugin_action"
 command = "dave.token-dashboard.open-dashboard"
 description = "Token Dashboard: open"
 
+# herdr-sidebar, a VS Code style file explorer plus source control docked left.
+# The plugin registers -windows variants of both actions, bind the plain ids.
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "herdr-sidebar.open-sidebar"
+description = "Sidebar: toggle file explorer"
+
+[[keys.command]]
+key = "prefix+shift+s"
+type = "plugin_action"
+command = "herdr-sidebar.open-git"
+description = "Sidebar: toggle source control"
+
 # ── UI & sidebar ─────────────────────────────────────────────────────────────
 [ui]
 sidebar_width          = 40        # default/target; auto-scales to workspace-name length
