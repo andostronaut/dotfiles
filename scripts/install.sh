@@ -41,7 +41,8 @@ home_entries=(
   .zshenv
   .zshrc
   # ~/.claude also holds CLAUDE.md, projects/ and daemon state, so only the
-  # tracked file is linked
+  # tracked files are linked
+  .claude/settings.json
   .claude/settings.local.json
 )
 
