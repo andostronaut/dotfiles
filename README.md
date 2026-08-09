@@ -58,26 +58,6 @@ Install all extensions that we needed with this command
 cat .config/vscode/extensions.list | xargs -L 1 code --install-extension
 ```
 
-## Setup TMUX
-
-### Relevant Files
-
-- [.tmux.conf](.tmux.conf)
-
-Install TMUX with Homebrew:
-
-```sh
-brew install tmux
-```
-
-Install Tpm (TMUX Package Manager):
-
-```sh
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
-Install all plugins in TMUX with command: `Ctrl-a + Shift-i`
-
 ## Configure Herdr
 
 [Herdr](https://herdr.dev/) is a mouse-first, agent-aware terminal multiplexer.

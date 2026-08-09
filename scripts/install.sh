@@ -37,7 +37,6 @@ home_entries=(
   .editorconfig
   .gitconfig
   .profile
-  .tmux.conf
   .zshenv
   .zshrc
   # ~/.claude also holds CLAUDE.md, projects/ and daemon state, so only the
