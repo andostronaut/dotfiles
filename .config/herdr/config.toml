@@ -161,7 +161,7 @@ confirm_close          = true
 pane_borders           = true
 pane_gaps              = true
 accent                 = "cyan"    # hex, named color, or rgb()
-agent_panel_sort       = "spaces"  # spaces | priority — Agent sidebar ordering
+agent_panel_sort       = "priority" # spaces | priority — Agent sidebar ordering
 show_agent_labels_on_pane_borders = true # label split panes with the detected agent
 
 # Agent rows in the sidebar. $-tokens are pane metadata published by the
