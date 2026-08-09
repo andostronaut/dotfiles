@@ -1,4 +1,7 @@
 {
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  },
   "hooks": {
     "Notification": [
       {
@@ -209,8 +212,5 @@
   },
   "effortLevel": "xhigh",
   "ultracode": true,
-  "permissions": {
-    "defaultMode": "bypassPermissions"
-  },
   "skipDangerousModePermissionPrompt": true
 }
