@@ -83,6 +83,64 @@ ln -sf $(pwd)/.config/herdr/config.toml ~/.config/herdr/config.toml
 Reload a running server after edits with `prefix+shift+r`, or print the full
 commented defaults with `herdr --default-config`.
 
+## Shared Themes
+
+Herdr, Ghostty and Neovim each have to be told the theme separately, and each
+names it differently. All three are on `vesper` today.
+
+| Tool | File | Key |
+| --- | --- | --- |
+| Herdr | [.config/herdr/config.toml](.config/herdr/config.toml) | `[theme] name` |
+| Ghostty | [.config/ghostty/config](.config/ghostty/config) | `theme` |
+| NvChad | [.config/nvim/lua/chadrc.lua](.config/nvim/lua/chadrc.lua) | `M.base46.theme` |
+
+Herdr is the bottleneck — it ships 17 built-in themes against Ghostty's 463 and
+base46's 95. These nine are the ones where all three ports really are the same
+palette, checked against the theme files rather than the names:
+
+| Herdr | Ghostty | NvChad | |
+| --- | --- | --- | --- |
+| `kanagawa` | `Kanagawa Wave` | `kanagawa` | dark |
+| `tokyo-night` | `TokyoNight Night` | `tokyonight` | dark |
+| `gruvbox` | `Gruvbox Dark` | `gruvbox` | dark |
+| `one-dark` | `Atom One Dark` | `onedark` | dark |
+| `solarized` | `iTerm2 Solarized Dark` | `solarized_dark` | dark |
+| `catppuccin-latte` | `Catppuccin Latte` | `catppuccin-latte` | light |
+| `gruvbox-light` | `Gruvbox Light` | `gruvbox_light` | light |
+| `solarized-light` | `iTerm2 Solarized Light` | `solarized_light` | light |
+| `rose-pine-dawn` | `Rose Pine Dawn` | `rosepine-dawn` | light |
+
+`kanagawa` is the cleanest of the darks — Ghostty's Kanagawa Wave and base46's
+`kanagawa` agree exactly on background (`#1f1f28`), foreground (`#dcd7ba`) and
+both blues.
+
+### Named in all three, but not the same palette
+
+These resolve everywhere, so nothing errors — the ports just drew different
+colors. Worth knowing before assuming a name match is a match.
+
+| Theme | Where it breaks |
+| --- | --- |
+| `vesper` | Ghostty's normal ANSI 1-6 are byte-identical to its unrelated `Mellow` theme. Background and brights do match |
+| `catppuccin` | base46's port is pre-1.0 — 6 of 10 core slots are stale, including the background (`#1e1d2d` vs `#1e1e2e`). Use `catppuccin-latte` |
+| `nord` | base46 maps both red and yellow to `#88c0d0`, so Nord's Aurora red and yellow never paint a token |
+| `one-light` | Ghostty's `Atom One Light` has its cyan slot byte-identical to green (`#3f953a`). base46's is the correct one |
+| `dracula` | base46 has no plain `dracula`, only `chadracula`, a self-declared modified version carrying neither `#ff5555` nor `#6272a4` |
+| `rose-pine` | base46's `base_30` invents hues, including a green borrowed from catppuccin. The `-dawn` variant is clean |
+
+`tokyo-night-day` and `kanagawa-lotus` exist in Herdr and Ghostty but have no
+base46 counterpart at all, in any variant.
+
+### Re-deriving the lists
+
+The three sources, if a version bump changes what is on offer:
+
+```sh
+herdr --default-config | grep -A3 "Built-in themes"
+ghostty +list-themes --plain
+ls ~/.local/share/nvim/lazy/base46/lua/base46/themes/
+```
+
 ## Setup Neovim
 
 The config is [NvChad](https://nvchad.com) **v2.5**, built on the official
