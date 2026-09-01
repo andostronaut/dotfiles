@@ -21,12 +21,14 @@ onboarding = false
 # Built-in names include: kanagawa, catppuccin, catppuccin-latte, tokyo-night,
 # nord, dracula, and "terminal" (follow your host terminal's ANSI palette).
 # Full list: search theme.name in the config reference.
-name = "vesper"
+name = "kanagawa"
 
 # Follow the host terminal's light/dark appearance and swap theme automatically.
 # When enabled, herdr uses light_name / dark_name (or the theme's built-in
 # light/dark sibling if those are unset). Manual selection in Settings disables it.
-# vesper is dark only, so there is nothing to switch to.
+# kanagawa's light sibling is kanagawa-lotus, so this would work — left off
+# because Ghostty and NvChad are pinned to the dark Wave variant and base46
+# ships no Lotus port to switch them to.
 auto_switch = false
 # light_name = "catppuccin-latte"
 # dark_name  = "catppuccin"
