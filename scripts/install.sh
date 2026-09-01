@@ -21,8 +21,8 @@ set -uo pipefail
 #                                   plugins.list at the commits in plugins.lock
 #
 # `herdr-lazy sync` builds plugins from source, and several are Rust. herdr-lazy
-# and herdr-sidebar need edition 2024, so rustup's stable toolchain must be
-# 1.85 or newer — an older one fails with "feature `edition2024` is required":
+# needs edition 2024, so rustup's stable toolchain must be 1.85 or newer — an
+# older one fails with "feature `edition2024` is required":
 #
 #   rustup update stable
 
