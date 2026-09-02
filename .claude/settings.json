@@ -199,6 +199,10 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "context-mode statusline"
+  },
   "enabledPlugins": {
     "warp@claude-code-warp": true,
     "context-mode@context-mode": true
@@ -220,9 +224,5 @@
   "effortLevel": "xhigh",
   "ultracode": true,
   "skipDangerousModePermissionPrompt": true,
-  "agentPushNotifEnabled": true,
-  "statusLine": {
-    "type": "command",
-    "command": "context-mode statusline"
-  }
+  "agentPushNotifEnabled": true
 }
