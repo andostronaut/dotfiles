@@ -212,5 +212,6 @@
   },
   "effortLevel": "xhigh",
   "ultracode": true,
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "agentPushNotifEnabled": true
 }
