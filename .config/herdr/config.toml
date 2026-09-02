@@ -21,14 +21,15 @@ onboarding = false
 # Built-in names include: kanagawa, catppuccin, catppuccin-latte, tokyo-night,
 # nord, dracula, and "terminal" (follow your host terminal's ANSI palette).
 # Full list: search theme.name in the config reference.
-name = "kanagawa"
+name = "rose-pine"
 
 # Follow the host terminal's light/dark appearance and swap theme automatically.
 # When enabled, herdr uses light_name / dark_name (or the theme's built-in
 # light/dark sibling if those are unset). Manual selection in Settings disables it.
-# kanagawa's light sibling is kanagawa-lotus, so this would work — left off
-# because Ghostty and NvChad are pinned to the dark Wave variant and base46
-# ships no Lotus port to switch them to.
+# rose-pine is the first theme here whose light sibling exists everywhere:
+# rose-pine-dawn, Ghostty's "Rose Pine Dawn" and base46's rosepine-dawn.
+# Still off because NvChad does not follow the terminal appearance, so
+# flipping herdr and Ghostty alone would leave Neovim dark.
 auto_switch = false
 # light_name = "catppuccin-latte"
 # dark_name  = "catppuccin"

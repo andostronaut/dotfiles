@@ -42,7 +42,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 # # Theme
-theme = Kanagawa Wave
+theme = Rose Pine
 window-save-state = always
 macos-icon=xray
 

@@ -86,7 +86,7 @@ commented defaults with `herdr --default-config`.
 ## Shared Themes
 
 Herdr, Ghostty and Neovim each have to be told the theme separately, and each
-names it differently. All three are on `kanagawa` today.
+names it differently. All three are on `rose-pine` today.
 
 | Tool | File | Key |
 | --- | --- | --- |
