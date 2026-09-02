@@ -200,7 +200,8 @@
     ]
   },
   "enabledPlugins": {
-    "warp@claude-code-warp": true
+    "warp@claude-code-warp": true,
+    "context-mode@context-mode": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -208,10 +209,20 @@
         "source": "github",
         "repo": "warpdotdev/claude-code-warp"
       }
+    },
+    "context-mode": {
+      "source": {
+        "source": "github",
+        "repo": "mksglu/context-mode"
+      }
     }
   },
   "effortLevel": "xhigh",
   "ultracode": true,
   "skipDangerousModePermissionPrompt": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "statusLine": {
+    "type": "command",
+    "command": "context-mode statusline"
+  }
 }
