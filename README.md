@@ -83,6 +83,92 @@ ln -sf $(pwd)/.config/herdr/config.toml ~/.config/herdr/config.toml
 Reload a running server after edits with `prefix+shift+r`, or print the full
 commented defaults with `herdr --default-config`.
 
+## Herdr Plugins
+
+Nine plugins, declared in
+[plugins.list](.config/herdr/plugins/config/herdr-lazy/plugins.list) and pinned
+to commits in
+[plugins.lock](.config/herdr/plugins/config/herdr-lazy/plugins.lock). Both files
+are symlinked into `~/.config/herdr`, so `herdr-lazy sync` rebuilds the set on a
+new machine. Several are Rust and build from source.
+
+| Plugin | What it does |
+| --- | --- |
+| clauth | Multi-account Claude switcher, usage windows, auto-switch chain |
+| herdr-agent-quota | Credential-scoped quota and context in the Agent sidebar |
+| usagebar | Per-pane provider, limit, and context tokens |
+| gecm.agents-usage | Provider usage modal |
+| dave.token-dashboard | Token dashboard in its own tab |
+| jmarbutt.spaces-pr-status | GitHub PR state next to each branch |
+| persiyanov.reviewr | Comment on the agent's diff and send it back |
+| herdr-lazy | Declarative plugin management, the two files above |
+| rjyo.window-title-sync | Terminal window title follows the pane |
+
+### Keys
+
+Prefix is `ctrl+space`. These are set in
+[config.toml](.config/herdr/config.toml); unlisted keys keep herdr's defaults.
+
+| Key | Does |
+| --- | --- |
+| `prefix+a` | clauth: accounts, usage, auto-switch chain |
+| `prefix+f` | Agent Quota: dashboard |
+| `prefix+shift+f` | Agent Quota: refresh all quotas |
+| `prefix+shift+q` | Agent Quota: settings |
+| `prefix+u` | Agents Usage: provider usage modal |
+| `prefix+shift+u` | Agent Usage: limits pane below |
+| `prefix+shift+m` | Agent Usage: refresh sidebar meters |
+| `prefix+d` | Token Dashboard |
+| `prefix+shift+v` | reviewr: toggle review pane |
+| `prefix+shift+l` | herdr-lazy: manage plugins |
+| `prefix+shift+b` | PR: board of every space by state |
+| `prefix+shift+o` | PR: open this space's pull request |
+| `prefix+shift+c` | PR: this space's checks |
+| `prefix+shift+y` | PR: re-query GitHub, ignore caches |
+
+### Using clauth
+
+`prefix+a` opens the dashboard over whatever is running. Switch accounts with a
+keystroke inside it, `q` to quit. There is no separate account picker by design,
+and herdr allows one popup per session, so pressing the key while it is already
+up is a no-op rather than an error.
+
+That switches the *global* credentials. To pin one pane to one account:
+
+```sh
+clauth start <profile>                   # claude in that profile's own CLAUDE_CONFIG_DIR
+clauth start <profile> -- --model haiku  # flags after -- go to claude
+clauth start --isolated <profile> -p < prompt.txt   # headless, no global memory or hooks
+```
+
+`clauth login <name>` adds an account, `clauth list` shows them with usage.
+
+`$clauth` in the sidebar names the account each Claude pane is spending. A
+per-pane watcher republishes it every few seconds because an account swap fires
+no herdr event — without that timer the tag goes stale the moment you switch.
+
+The plugin's own knobs (popup width, tag refresh, border label) are in the
+dashboard's Plugin tab and persist to `~/.clauth/profiles.toml`, not to herdr's
+config, so they never show up as a dirty file here.
+
+### Two things that bite
+
+**Some plugins ship their own installer, and `herdr plugin install` alone
+leaves them half-wired.** `clauth herdr install` and herdr-agent-quota's
+`configure` action write the keybinding and the sidebar rows that a herdr plugin
+cannot declare for itself. Install without them and it looks like it worked
+while rendering nothing. herdr also runs plugin actions in the server's own
+environment, so agent-quota's options have to travel through files in
+`$(herdr plugin config-dir herdr-agent-quota)` rather than through `env` — that
+is how it gets scoped to `claude` instead of dying on an absent `omp`.
+
+**`rows_by_agent` replaces `rows` for that agent rather than extending it.**
+Both installers write a `rows_by_agent.claude` template, and each one's default
+drops the other's tokens along with usagebar's. The row in
+[config.toml](.config/herdr/config.toml) is merged by hand. Re-check it, and the
+key bindings, after running either installer again — agent-quota's `configure`
+also grabs `prefix+shift+r`, which is herdr's own `reload_config`.
+
 ## Shared Themes
 
 Herdr, Ghostty and Neovim each have to be told the theme separately, and each
