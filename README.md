@@ -85,7 +85,7 @@ commented defaults with `herdr --default-config`.
 
 ## Herdr Plugins
 
-Nine plugins, declared in
+Eight plugins, declared in
 [plugins.list](.config/herdr/plugins/config/herdr-lazy/plugins.list) and pinned
 to commits in
 [plugins.lock](.config/herdr/plugins/config/herdr-lazy/plugins.lock). Both files
@@ -98,7 +98,6 @@ new machine. Several are Rust and build from source.
 | herdr-agent-quota | Credential-scoped quota and context in the Agent sidebar |
 | usagebar | Per-pane provider, limit, and context tokens |
 | gecm.agents-usage | Provider usage modal |
-| dave.token-dashboard | Token dashboard in its own tab |
 | jmarbutt.spaces-pr-status | GitHub PR state next to each branch |
 | persiyanov.reviewr | Comment on the agent's diff and send it back |
 | herdr-lazy | Declarative plugin management, the two files above |
@@ -118,7 +117,6 @@ Prefix is `ctrl+space`. These are set in
 | `prefix+u` | Agents Usage: provider usage modal |
 | `prefix+shift+u` | Agent Usage: limits pane below |
 | `prefix+shift+m` | Agent Usage: refresh sidebar meters |
-| `prefix+d` | Token Dashboard |
 | `prefix+shift+v` | reviewr: toggle review pane |
 | `prefix+shift+l` | herdr-lazy: manage plugins |
 | `prefix+shift+b` | PR: board of every space by state |

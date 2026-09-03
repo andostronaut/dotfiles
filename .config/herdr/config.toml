@@ -104,13 +104,6 @@ type = "plugin_action"
 command = "herdr-lazy.manage"
 description = "herdr-lazy: manage plugins"
 
-# token-dashboard opens in its own tab
-[[keys.command]]
-key = "prefix+d"
-type = "plugin_action"
-command = "dave.token-dashboard.open-dashboard"
-description = "Token Dashboard: open"
-
 # spaces-pr-status. The sidebar tokens update on their own, these are for the
 # board and for jumping to the PR.
 [[keys.command]]
