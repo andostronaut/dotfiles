@@ -113,7 +113,7 @@ Prefix is `ctrl+space`. These are set in
 | `prefix+u` | Agents Usage: provider usage modal |
 | `prefix+shift+u` | Agent Usage: limits pane below |
 | `prefix+shift+m` | Agent Usage: refresh sidebar meters |
-| `prefix+shift+v` | reviewr: toggle review pane |
+| `prefix+d` | reviewr: toggle review pane (d for diff) |
 | `prefix+shift+l` | herdr-lazy: manage plugins |
 | `prefix+shift+b` | PR: board of every space by state |
 | `prefix+shift+o` | PR: open this space's pull request |

@@ -90,9 +90,11 @@ command = "usagebar.refresh"
 description = "Agent Usage: refresh sidebar meters"
 
 # reviewr: comment on the agent's diff and send it back. Its README suggests
-# cmd+r, prefix-based keeps it with the rest.
+# cmd+r, prefix-based keeps it with the rest. d for diff; the slot came free
+# when token-dashboard was removed, and bare prefix+d is not a herdr default
+# (prefix+shift+d is close_workspace).
 [[keys.command]]
-key = "prefix+shift+v"
+key = "prefix+d"
 type = "plugin_action"
 command = "persiyanov.reviewr.toggle"
 description = "reviewr: toggle review pane"
