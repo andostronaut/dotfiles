@@ -130,23 +130,6 @@ type = "plugin_action"
 command = "jmarbutt.spaces-pr-status.refresh"
 description = "PR: re-query GitHub, ignore caches"
 
-# herdr-agent-quota. Its own README suggests prefix+shift+q for settings.
-# `configure --apply` rewrites this config.toml, which is a tracked dotfile —
-# run it only when you mean to, and check `git diff` afterwards.
-[[keys.command]]
-key = "prefix+shift+q"
-type = "plugin_action"
-command = "herdr-agent-quota.open-settings"
-description = "Agent Quota: settings"
-
-# The dashboard is a pane entrypoint rather than an action, so it goes through
-# the CLI. prefix+f was freed when herdr-sidebar was removed.
-[[keys.command]]
-key = "prefix+f"
-type = "shell"
-command = "herdr plugin pane open --plugin herdr-agent-quota --entrypoint dashboard --focus"
-description = "Agent Quota: dashboard"
-
 # ── UI & sidebar ─────────────────────────────────────────────────────────────
 [ui]
 sidebar_width          = 40        # default/target; auto-scales to workspace-name length
@@ -172,7 +155,11 @@ show_agent_labels_on_pane_borders = true # label split panes with the detected a
 #   $context   per-pane context use, e.g. "⛁ 13% (130k)"
 [ui.sidebar.agents]
 row_gap = 0                          # 1 restores the old blank line between agents
-rows = [["state_icon", "$title", { token = "tab", bold = true, dim = false }, { token = "$quota_provider_model", bold = true, dim = false }], ["$provider", "$limit"], ["$context"], [{ token = "$quota_topic", bold = false, dim = false }], [{ token = "$quota_cache", bold = false, dim = false }, { token = "$quota_cache_ttl", bold = false, dim = false }, { token = "$quota_cache_state", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_error", fg = "#e4b957", bold = false, dim = false }], [{ token = "$quota_context", bold = false, dim = false }, { token = "$quota_week_inline_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_inline_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_inline_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_inline_unknown", bold = false, dim = false }], [{ token = "$quota_5h_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_5h_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_5h_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_5h_unknown", bold = false, dim = false }, { token = "$quota_week_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_unknown", bold = false, dim = false }]]
+rows = [
+  ["state_icon", "$title"],
+  ["$provider", "$limit"],
+  ["$context"],
+]
 
 # Space rows. Rows 1-2 are herdr's defaults; row 3 is spaces-pr-status, which
 # puts GitHub PR state next to each branch:
@@ -244,25 +231,14 @@ type = "plugin_action"
 command = "clauth.open"
 description = "clauth accounts"
 
-# NOTE: `configure --apply` binds this to prefix+shift+r, which is herdr's own
-# reload_config. Rebound to shift+f to pair with prefix+f (quota dashboard).
-# Re-check this after any future `configure --apply`.
-[[keys.command]]
-key = "prefix+shift+f"
-type = "plugin_action"
-command = "herdr-agent-quota.refresh"
-description = "Agent Quota: refresh all quotas"
-
 # clauth herdr plugin: `$clauth` renders the account each Claude Code pane burns.
 # rows_by_agent REPLACES rows for that agent rather than extending it, so
 # `clauth herdr install` writing its own three rows here would have dropped the
-# usagebar tokens above for Claude panes — the ones worth having. This is the
-# rows list from [ui.sidebar.agents] with $clauth added beside $context.
+# usagebar tokens above for Claude panes. This is the rows list from
+# [ui.sidebar.agents] with $clauth added beside $context.
 [ui.sidebar.agents.rows_by_agent]
 claude = [
-  ["state_icon", "$title", { token = "$quota_provider_model", bold = true }],
+  ["state_icon", "$title"],
   ["$provider", "$limit"],
   ["$context", "$clauth"],
-  [{ token = "$quota_cache" }, { token = "$quota_cache_ttl" }, { token = "$quota_cache_state", fg = "#e4b957" }, { token = "$quota_error", fg = "#e4b957" }],
-  [{ token = "$quota_5h_normal", fg = "#82d978" }, { token = "$quota_5h_warning", fg = "#e4b957" }, { token = "$quota_5h_danger", fg = "#f16f7e" }, { token = "$quota_5h_unknown" }, { token = "$quota_week_normal", fg = "#82d978" }, { token = "$quota_week_warning", fg = "#e4b957" }, { token = "$quota_week_danger", fg = "#f16f7e" }, { token = "$quota_week_unknown" }],
 ]

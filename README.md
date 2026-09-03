@@ -85,7 +85,7 @@ commented defaults with `herdr --default-config`.
 
 ## Herdr Plugins
 
-Eight plugins, declared in
+Seven plugins, declared in
 [plugins.list](.config/herdr/plugins/config/herdr-lazy/plugins.list) and pinned
 to commits in
 [plugins.lock](.config/herdr/plugins/config/herdr-lazy/plugins.lock). Both files
@@ -95,7 +95,6 @@ new machine. Several are Rust and build from source.
 | Plugin | What it does |
 | --- | --- |
 | clauth | Multi-account Claude switcher, usage windows, auto-switch chain |
-| herdr-agent-quota | Credential-scoped quota and context in the Agent sidebar |
 | usagebar | Per-pane provider, limit, and context tokens |
 | gecm.agents-usage | Provider usage modal |
 | jmarbutt.spaces-pr-status | GitHub PR state next to each branch |
@@ -111,9 +110,6 @@ Prefix is `ctrl+space`. These are set in
 | Key | Does |
 | --- | --- |
 | `prefix+a` | clauth: accounts, usage, auto-switch chain |
-| `prefix+f` | Agent Quota: dashboard |
-| `prefix+shift+f` | Agent Quota: refresh all quotas |
-| `prefix+shift+q` | Agent Quota: settings |
 | `prefix+u` | Agents Usage: provider usage modal |
 | `prefix+shift+u` | Agent Usage: limits pane below |
 | `prefix+shift+m` | Agent Usage: refresh sidebar meters |
@@ -152,20 +148,20 @@ config, so they never show up as a dirty file here.
 ### Two things that bite
 
 **Some plugins ship their own installer, and `herdr plugin install` alone
-leaves them half-wired.** `clauth herdr install` and herdr-agent-quota's
-`configure` action write the keybinding and the sidebar rows that a herdr plugin
-cannot declare for itself. Install without them and it looks like it worked
-while rendering nothing. herdr also runs plugin actions in the server's own
-environment, so agent-quota's options have to travel through files in
-`$(herdr plugin config-dir herdr-agent-quota)` rather than through `env` — that
-is how it gets scoped to `claude` instead of dying on an absent `omp`.
+leaves them half-wired.** `clauth herdr install` writes the keybinding and the
+sidebar row that a herdr plugin cannot declare for itself. Install without it
+and it looks like it worked while rendering nothing. herdr also runs plugin
+actions in the server's own environment, so a plugin's options have to travel
+through files in `$(herdr plugin config-dir <id>)` rather than through `env`.
 
 **`rows_by_agent` replaces `rows` for that agent rather than extending it.**
-Both installers write a `rows_by_agent.claude` template, and each one's default
-drops the other's tokens along with usagebar's. The row in
-[config.toml](.config/herdr/config.toml) is merged by hand. Re-check it, and the
-key bindings, after running either installer again — agent-quota's `configure`
-also grabs `prefix+shift+r`, which is herdr's own `reload_config`.
+`clauth herdr install` writes a `rows_by_agent.claude` template whose default
+drops usagebar's tokens. The row in [config.toml](.config/herdr/config.toml) is
+merged by hand — re-check it after running that installer again.
+
+**Check what a plugin actually publishes before trusting it.** `herdr pane get
+<pane_id>` lists the pane's tokens; a plugin writing none is doing nothing for
+you no matter how its sidebar rows are configured.
 
 ## Shared Themes
 
