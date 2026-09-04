@@ -132,6 +132,15 @@ type = "plugin_action"
 command = "jmarbutt.spaces-pr-status.refresh"
 description = "PR: re-query GitHub, ignore caches"
 
+# space-usage. The sidebar $usage row is the main surface and needs no key;
+# this is the live overlay. A pane entrypoint rather than an action, so it goes
+# through the CLI. s for space usage — prefix+s alone is herdr's settings.
+[[keys.command]]
+key = "prefix+shift+s"
+type = "shell"
+command = "herdr plugin pane open --plugin ez-corp.space-usage --entrypoint dashboard --focus"
+description = "Space usage: live CPU/RAM overlay"
+
 # ── UI & sidebar ─────────────────────────────────────────────────────────────
 [ui]
 sidebar_width          = 40        # default/target; auto-scales to workspace-name length
@@ -179,6 +188,9 @@ rows = [
   ["state_icon", "workspace"],
   ["branch", "git_status"],
   ["$pr", "$pr_checks", "$pr_review"],
+  # --- added by ez-corp.space-usage (removed by `status-disable`) ---
+  ["$usage"],
+  # --- end ez-corp.space-usage ---
 ]
 
 # ── Notifications ────────────────────────────────────────────────────────────

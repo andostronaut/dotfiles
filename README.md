@@ -85,7 +85,7 @@ commented defaults with `herdr --default-config`.
 
 ## Herdr Plugins
 
-Seven plugins, declared in
+Eight plugins, declared in
 [plugins.list](.config/herdr/plugins/config/herdr-lazy/plugins.list) and pinned
 to commits in
 [plugins.lock](.config/herdr/plugins/config/herdr-lazy/plugins.lock). Both files
@@ -95,6 +95,7 @@ new machine. Several are Rust and build from source.
 | Plugin | What it does |
 | --- | --- |
 | clauth | Multi-account Claude switcher, usage windows, auto-switch chain |
+| ez-corp.space-usage | Live CPU and RAM per space, in the spaces card |
 | usagebar | Per-pane provider, limit, and context tokens |
 | gecm.agents-usage | Provider usage modal |
 | jmarbutt.spaces-pr-status | GitHub PR state next to each branch |
@@ -114,6 +115,7 @@ Prefix is `ctrl+space`. These are set in
 | `prefix+shift+u` | Agent Usage: limits pane below |
 | `prefix+shift+m` | Agent Usage: refresh sidebar meters |
 | `prefix+d` | reviewr: toggle review pane (d for diff) |
+| `prefix+shift+s` | Space usage: live CPU/RAM overlay |
 | `prefix+shift+l` | herdr-lazy: manage plugins |
 | `prefix+shift+b` | PR: board of every space by state |
 | `prefix+shift+o` | PR: open this space's pull request |
