@@ -65,15 +65,6 @@ prefix = "ctrl+space"     # default is ctrl+b. herdr has no key-sequence syntax,
 # new_worktree     = "prefix+shift+g"
 
 # ── Plugin keybindings ───────────────────────────────────────────────────────
-# gecm.agents-usage exposes its modal as a pane entrypoint rather than an
-# action, so it goes through the CLI. Inside the modal, r refreshes and any
-# other key closes it.
-[[keys.command]]
-key = "prefix+u"
-type = "shell"
-command = "herdr plugin pane open --plugin gecm.agents-usage --entrypoint usage"
-description = "Agents Usage: provider usage modal"
-
 # usagebar registers real plugin actions, so those bind directly.
 # usagebar's own open-limits action hardcodes --direction right, so call the
 # CLI directly to get a split below instead.
