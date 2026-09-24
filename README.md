@@ -85,7 +85,7 @@ commented defaults with `herdr --default-config`.
 
 ## Herdr Plugins
 
-Four plugins, declared in
+Three plugins, declared in
 [plugins.list](.config/herdr/plugins/config/herdr-lazy/plugins.list) and pinned
 to commits in
 [plugins.lock](.config/herdr/plugins/config/herdr-lazy/plugins.lock). Both files
@@ -97,7 +97,6 @@ new machine.
 | clauth | Multi-account Claude switcher, usage windows, auto-switch chain |
 | herdr-lazy | Declarative plugin management, the two files above |
 | persiyanov.reviewr | Comment on the agent's diff and send it back |
-| rjyo.window-title-sync | Terminal window title follows the pane |
 
 The sidebar is otherwise herdr's own. A run of plugins that each wanted a piece
 of it — usage meters, quota bars, PR state, CPU/RAM, a full agents-list
