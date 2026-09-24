@@ -130,7 +130,9 @@ clauth start <profile> -- --model haiku  # flags after -- go to claude
 ```
 
 `clauth login <name>` adds an account, `clauth list` shows them with usage.
-`$clauth` in the sidebar names the account each Claude pane is spending.
+The `$clauth` sidebar token is deliberately not in any row — the account is
+in the dashboard, not on every line. `clauth herdr install` writes it back
+into `rows_by_agent`, so re-remove it if that is ever re-run.
 
 ### Two things that bite
 
