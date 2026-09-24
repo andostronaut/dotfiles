@@ -80,6 +80,13 @@ description = "reviewr: toggle review pane"
 # Its README also offers a $ci_* block for [ui.sidebar.spaces]. Deliberately
 # NOT added: the pane carries everything except the sidebar glyphs, and that
 # table is one of the three the sidebar plugins kept fighting over.
+#
+# Its [[startup]] block ran `herdr-gh-checks --sidebar` on every server start,
+# a poller publishing $ci_* tokens for a sidebar block we never added. Removed
+# from the installed manifest at
+#   ~/.config/herdr/plugins/github/herdr-gh-checks-*/herdr-plugin.toml
+# (a .bak sits beside it). Reinstalling or updating the plugin restores it —
+# re-remove it then.
 [[keys.command]]
 key = "prefix+m"
 type = "plugin_action"

@@ -150,6 +150,13 @@ rm ~/.config/herdr/config.toml
 ln -s "$PWD/.config/herdr/config.toml" ~/.config/herdr/config.toml
 ```
 
+**A plugin's `[[startup]]` block runs whether you use its output or not.**
+gh-checks shipped one running `--sidebar`, a poller pushing `$ci_*` tokens for
+a sidebar row we never added — a background process and per-space `gh` calls
+for nothing visible. It is removed from the installed manifest under
+`~/.config/herdr/plugins/github/herdr-gh-checks-*/`, with a `.bak` beside it.
+A plugin update restores it, since the install directory is content-hashed.
+
 **Check what a plugin actually publishes before trusting it.** `herdr pane get
 <pane_id>` lists that pane's tokens; a plugin writing none is doing nothing for
 you however its rows are configured.
