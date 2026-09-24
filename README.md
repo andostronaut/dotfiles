@@ -85,7 +85,7 @@ commented defaults with `herdr --default-config`.
 
 ## Herdr Plugins
 
-Five plugins, declared in
+Six plugins, declared in
 [plugins.list](.config/herdr/plugins/config/herdr-lazy/plugins.list) and pinned
 to commits in
 [plugins.lock](.config/herdr/plugins/config/herdr-lazy/plugins.lock). Both files
@@ -95,6 +95,7 @@ new machine.
 | Plugin | What it does |
 | --- | --- |
 | clauth | Multi-account Claude switcher, usage windows, auto-switch chain |
+| hhdebb.herdr-radar | Agents card: project grouping, vendor logos, state by colour |
 | itisbryan/herdr-gh-checks | Current PR's CI, checks and merge state, in a pane |
 | jmarbutt.spaces-pr-status | GitHub PR state beside each branch in the spaces card |
 | herdr-lazy | Declarative plugin management, the two files above |
@@ -114,6 +115,8 @@ Prefix is `ctrl+space`. Unlisted keys keep herdr's defaults.
 | Key | Does |
 | --- | --- |
 | `prefix+a` | clauth: accounts, usage, auto-switch chain |
+| `prefix+shift+a` | Agents: active <-> recent (radar view flip) |
+| `prefix+comma` | herdr-radar settings |
 | `prefix+d` | reviewr: toggle review pane (d for diff) |
 | `prefix+m` | gh-checks: PR CI, checks and merge (m for merge) |
 | `prefix+shift+l` | herdr-lazy: manage plugins |
@@ -135,6 +138,26 @@ clauth start <profile> -- --model haiku  # flags after -- go to claude
 The `$clauth` sidebar token is deliberately not in any row — the account is
 in the dashboard, not on every line. `clauth herdr install` writes it back
 into `rows_by_agent`, so re-remove it if that is ever re-run.
+
+### herdr-radar settings live outside this repo
+
+Its knobs are in `$(herdr plugin config-dir hhdebb.herdr-radar)/config.toml`,
+not here, so they survive `configure`:
+
+| Key | Set to | Why |
+| --- | --- | --- |
+| `variant` | `"font"` | skips the `fc-match` probe and uses the icon font outright |
+| `group_gap` | `false` | drops the blank row radar puts after each workspace's last pane |
+
+Others worth knowing: `group_indent` (default 2), `show_tab`, and
+`activity_fresh_minutes` / `activity_stale_minutes` (15 / 120), which decide
+when a pane stops reading as fresh and starts reading as abandoned.
+
+The icons need radar's patched font as ghostty's `font-family` — see
+[.config/ghostty/config](.config/ghostty/config). Without a `font-family` set
+at all, text and glyphs come from different fonts with different metrics and
+the logos render misaligned. Ghostty loads fonts at process start, so a new
+tab is not enough after changing it.
 
 ### Two things that bite
 

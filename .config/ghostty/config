@@ -43,6 +43,17 @@
 # resize-overlay-duration = 4s 200ms
 # # Theme
 theme = Rose Pine
+
+# herdr-radar draws its vendor logos and state marks from Private Use Area
+# codepoints. With no font-family set, ghostty took text from its default font
+# and glyphs from the icon font, and the metrics disagreed — misaligned icons.
+# This is radar's own patched JetBrains Mono (dist/JetBrainsMonoHerdr-Regular.ttf),
+# which carries those glyphs itself. It ships Regular only, so bold and italic
+# come from the real family rather than being synthesised.
+font-family = "JetBrains Mono Herdr"
+font-family-bold = "JetBrains Mono"
+font-family-italic = "JetBrains Mono"
+font-family-bold-italic = "JetBrains Mono"
 window-save-state = always
 macos-icon=xray
 
@@ -65,3 +76,8 @@ notify-on-command-finish = unfocused
 # Dropdown terminal, ctrl+cmd+` from anywhere (needs Accessibility permission)
 quick-terminal-position = top
 keybind = global:ctrl+cmd+grave_accent=toggle_quick_terminal
+
+# >>> herdr-radar font block
+font-codepoint-map = U+E1A0-U+E1B7=Herdr Agent Icons Max
+font-codepoint-map = U+E1C0-U+E1C5=Herdr Agent Icons Max
+# <<< herdr-radar font block

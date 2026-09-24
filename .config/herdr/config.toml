@@ -21,7 +21,7 @@ onboarding = false
 # Built-in names include: kanagawa, catppuccin, catppuccin-latte, tokyo-night,
 # nord, dracula, and "terminal" (follow your host terminal's ANSI palette).
 # Full list: search theme.name in the config reference.
-name = "rose-pine"
+name = "catppuccin"
 
 # Follow the host terminal's light/dark appearance and swap theme automatically.
 # When enabled, herdr uses light_name / dark_name (or the theme's built-in
@@ -93,6 +93,20 @@ type = "plugin_action"
 command = "herdr-gh-checks.show"
 description = "GH Checks: PR CI, checks and merge"
 
+# herdr-radar. Its --keys snippet asks for prefix+a, which is clauth's; shift+a
+# keeps the "a for agents" mnemonic. prefix+comma is its own suggestion.
+[[keys.command]]
+key = "prefix+shift+a"
+type = "plugin_action"
+command = "hhdebb.herdr-radar.view-flip"
+description = "Agents: active <-> recent"
+
+[[keys.command]]
+key = "prefix+comma"
+type = "plugin_action"
+command = "hhdebb.herdr-radar.settings"
+description = "herdr-radar settings"
+
 # herdr-lazy manage pane. prefix+l is focus_pane_right, hence shift.
 [[keys.command]]
 key = "prefix+shift+l"
@@ -102,6 +116,14 @@ description = "herdr-lazy: manage plugins"
 
 # ── UI & sidebar ─────────────────────────────────────────────────────────────
 [ui]
+
+# >>> herdr-radar tab-bar block
+tab_bar_right_separator = " · "
+tab_bar_right = [
+  { type = 'command', command = 'cat "/Users/ando/.local/state/herdr/plugins/hhdebb.herdr-radar/tabbar.txt"', interval_seconds = 6, timeout_seconds = 2 },
+]
+# <<< herdr-radar tab-bar block
+
 sidebar_width          = 40        # default/target; auto-scales to workspace-name length
 sidebar_min_width      = 40        # floor (default 18). Raise this to force a wider sidebar
                                    # even with short names; min == width == max pins it fixed.
@@ -158,15 +180,40 @@ allow_nested   = false             # allow launching herdr inside a herdr pane
 kitty_graphics = false             # experimental Kitty graphics for attached clients
 pane_history   = false             # persist pane screen history to session-history.json
 
-# Space rows. spaces-pr-status puts the branch's GitHub PR state next to it:
-#   $pr         glyph + number — ● open/passing ◐ running ⊗ failed ◌ draft
-#               ◆ merged ⊘ closed
+[[keys.command]]
+key = "prefix+a"
+type = "plugin_action"
+command = "clauth.open"
+description = "clauth accounts"
+
+# >>> herdr-radar theme block
+[theme.custom]
+active_row_bg = "#414868"
+# <<< herdr-radar theme block
+
+# >>> herdr-radar sidebar block
+[ui.sidebar.agents]
+# logo glyphs: font
+rows = [[{ token = "$group_parent", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$group", fg = "#a8abbd", bold = true, dim = false }, { token = "$group_stale", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$split_mark", fg = "#8b8e9c", bold = false, dim = false }, { token = "$logo", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_working", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_working", fg = "#c78a1f", bold = true, dim = false }, { token = "$title_done", fg = "#4c9a5a", bold = false, dim = false }, { token = "$title_blocked", fg = "#c04a4a", bold = false, dim = false }, { token = "$title_idle_fresh", fg = "#95bba2", bold = false, dim = false }, { token = "$title_idle", fg = "#a99e92", bold = false, dim = false }, { token = "$title_idle_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_unknown", fg = "#907aa9", bold = false, dim = false }], ["$gap"]]
+
+[ui.sidebar.agents.rows_by_agent]
+claude = [[{ token = "$group_parent", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$group", fg = "#a8abbd", bold = true, dim = false }, { token = "$group_stale", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$split_mark", fg = "#8b8e9c", bold = false, dim = false }, { token = "$logo", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_working", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_working", fg = "#d97757", bold = true, dim = false }, { token = "$title_done", fg = "#4c9a5a", bold = false, dim = false }, { token = "$title_blocked", fg = "#c04a4a", bold = false, dim = false }, { token = "$title_idle_fresh", fg = "#95bba2", bold = false, dim = false }, { token = "$title_idle", fg = "#a99e92", bold = false, dim = false }, { token = "$title_idle_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_unknown", fg = "#907aa9", bold = false, dim = false }], ["$gap"]]
+gemini = [[{ token = "$group_parent", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$group", fg = "#a8abbd", bold = true, dim = false }, { token = "$group_stale", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$split_mark", fg = "#8b8e9c", bold = false, dim = false }, { token = "$logo", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_working", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_working", fg = "#4285f4", bold = true, dim = false }, { token = "$title_done", fg = "#4c9a5a", bold = false, dim = false }, { token = "$title_blocked", fg = "#c04a4a", bold = false, dim = false }, { token = "$title_idle_fresh", fg = "#95bba2", bold = false, dim = false }, { token = "$title_idle", fg = "#a99e92", bold = false, dim = false }, { token = "$title_idle_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_unknown", fg = "#907aa9", bold = false, dim = false }], ["$gap"]]
+kimi = [[{ token = "$group_parent", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$group", fg = "#a8abbd", bold = true, dim = false }, { token = "$group_stale", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$split_mark", fg = "#8b8e9c", bold = false, dim = false }, { token = "$logo", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_working", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_working", fg = "#1783ff", bold = true, dim = false }, { token = "$title_done", fg = "#4c9a5a", bold = false, dim = false }, { token = "$title_blocked", fg = "#c04a4a", bold = false, dim = false }, { token = "$title_idle_fresh", fg = "#95bba2", bold = false, dim = false }, { token = "$title_idle", fg = "#a99e92", bold = false, dim = false }, { token = "$title_idle_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_unknown", fg = "#907aa9", bold = false, dim = false }], ["$gap"]]
+qwen = [[{ token = "$group_parent", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$group", fg = "#a8abbd", bold = true, dim = false }, { token = "$group_stale", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$split_mark", fg = "#8b8e9c", bold = false, dim = false }, { token = "$logo", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_working", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_working", fg = "#615ced", bold = true, dim = false }, { token = "$title_done", fg = "#4c9a5a", bold = false, dim = false }, { token = "$title_blocked", fg = "#c04a4a", bold = false, dim = false }, { token = "$title_idle_fresh", fg = "#95bba2", bold = false, dim = false }, { token = "$title_idle", fg = "#a99e92", bold = false, dim = false }, { token = "$title_idle_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_unknown", fg = "#907aa9", bold = false, dim = false }], ["$gap"]]
+kiro = [[{ token = "$group_parent", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$group", fg = "#a8abbd", bold = true, dim = false }, { token = "$group_stale", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$split_mark", fg = "#8b8e9c", bold = false, dim = false }, { token = "$logo", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_working", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_working", fg = "#9046ff", bold = true, dim = false }, { token = "$title_done", fg = "#4c9a5a", bold = false, dim = false }, { token = "$title_blocked", fg = "#c04a4a", bold = false, dim = false }, { token = "$title_idle_fresh", fg = "#95bba2", bold = false, dim = false }, { token = "$title_idle", fg = "#a99e92", bold = false, dim = false }, { token = "$title_idle_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_unknown", fg = "#907aa9", bold = false, dim = false }], ["$gap"]]
+cline = [[{ token = "$group_parent", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$group", fg = "#a8abbd", bold = true, dim = false }, { token = "$group_stale", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$split_mark", fg = "#8b8e9c", bold = false, dim = false }, { token = "$logo", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_working", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_working", fg = "#586876", bold = true, dim = false }, { token = "$title_done", fg = "#4c9a5a", bold = false, dim = false }, { token = "$title_blocked", fg = "#c04a4a", bold = false, dim = false }, { token = "$title_idle_fresh", fg = "#95bba2", bold = false, dim = false }, { token = "$title_idle", fg = "#a99e92", bold = false, dim = false }, { token = "$title_idle_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_unknown", fg = "#907aa9", bold = false, dim = false }], ["$gap"]]
+kilo = [[{ token = "$group_parent", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$group", fg = "#a8abbd", bold = true, dim = false }, { token = "$group_stale", fg = "#8b8e9c", bold = true, dim = false }], [{ token = "$split_mark", fg = "#8b8e9c", bold = false, dim = false }, { token = "$logo", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_working", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "", fg = "#d97757" }, { contains = "", fg = "#4285f4" }, { contains = "", fg = "#1783ff" }, { contains = "", fg = "#4d6bfe" }, { contains = "", fg = "#615ced" }, { contains = "", fg = "#9046ff" }, { contains = "", fg = "#586876" }, { contains = "", fg = "#9a9808" }] }, { token = "$logo_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_working", fg = "#9a9808", bold = true, dim = false }, { token = "$title_done", fg = "#4c9a5a", bold = false, dim = false }, { token = "$title_blocked", fg = "#c04a4a", bold = false, dim = false }, { token = "$title_idle_fresh", fg = "#95bba2", bold = false, dim = false }, { token = "$title_idle", fg = "#a99e92", bold = false, dim = false }, { token = "$title_idle_stale", fg = "#8b8e9c", bold = false, dim = false }, { token = "$title_unknown", fg = "#907aa9", bold = false, dim = false }], ["$gap"]]
+
+[ui.sidebar.spaces]
+# Hand-written, and deliberately INSIDE radar's marker block: TOML forbids
+# declaring [ui.sidebar.spaces] twice, and a copy outside the markers makes
+# radar refuse to manage the agents block at all. radar has no setting to skip
+# this table, so `configure` / `unconfigure` WILL overwrite these rows.
+#
+#   $pr         ● open/passing ◐ running ⊗ failed ◌ draft ◆ merged ⊘ closed
 #   $pr_checks  passing/total, e.g. "✓ 12/12"
 #   $pr_review  approved / changes requested / review needed
-#   $pr_diff    added/removed, e.g. "+458 -15"
-# Tokens carry a TTL, so a row blanks rather than going stale if the poller
-# dies. Rows 1-2 are herdr's own defaults, kept.
-[ui.sidebar.spaces]
 row_gap = 0
 rows = [
   ["state_icon", "workspace"],
@@ -174,17 +221,4 @@ rows = [
   ["$pr", "$pr_checks", "$pr_review"],
 ]
 
-
-# clauth herdr plugin
-[[keys.command]]
-key = "prefix+a"
-type = "plugin_action"
-command = "clauth.open"
-description = "clauth accounts"
-
-# clauth herdr plugin: `$clauth` renders the account each Claude Code pane burns
-[ui.sidebar.agents.rows_by_agent]
-# $clauth dropped from the row on purpose — the account is in the dashboard
-# (prefix+a), not on every line. `clauth herdr install` rewrites this row, so
-# re-remove the token if that is ever re-run.
-claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
+# <<< herdr-radar sidebar block
