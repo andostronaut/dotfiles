@@ -85,7 +85,7 @@ commented defaults with `herdr --default-config`.
 
 ## Herdr Plugins
 
-Six plugins, declared in
+Seven plugins, declared in
 [plugins.list](.config/herdr/plugins/config/herdr-lazy/plugins.list) and pinned
 to commits in
 [plugins.lock](.config/herdr/plugins/config/herdr-lazy/plugins.lock). Both files
@@ -96,6 +96,7 @@ new machine.
 | --- | --- |
 | clauth | Multi-account Claude switcher, usage windows, auto-switch chain |
 | hhdebb.herdr-radar | Agents card: project grouping, vendor logos, state by colour |
+| herdr.auto-title | Names tabs and panes after the work in them |
 | itisbryan/herdr-gh-checks | Current PR's CI, checks and merge state, in a pane |
 | jmarbutt.spaces-pr-status | GitHub PR state beside each branch in the spaces card |
 | herdr-lazy | Declarative plugin management, the two files above |
@@ -138,6 +139,20 @@ clauth start <profile> -- --model haiku  # flags after -- go to claude
 The `$clauth` sidebar token is deliberately not in any row — the account is
 in the dashboard, not on every line. `clauth herdr install` writes it back
 into `rows_by_agent`, so re-remove it if that is ever re-run.
+
+### auto-title needs a newer Go than mise pins
+
+`go.mod` asks for `go 1.24`; `~/.config/mise/config.toml` pins `go = "1.21"`
+and there are no prebuilt binaries, so the install builds from source. It works
+anyway because `GOTOOLCHAIN` is `auto`, so Go 1.21 fetches a 1.24 toolchain on
+demand — verified by building a `go 1.24` module, which produced `go1.24.0`.
+If `GOTOOLCHAIN` is ever set to `local`, this install breaks.
+
+Its settings are env vars in `~/.config/herdr-auto-title/config.env`, not here:
+`HERDR_AUTO_TITLE_MAX_LENGTH` (50), `_BRANCH_MAX` (12, `0` hides branches),
+`_POSITION` (tab index in front), `_POLL_MS` (500). It reads the file once at
+startup, so `herdr plugin action invoke restart --plugin herdr.auto-title`
+after editing. A tab or pane you rename yourself is left alone from then on.
 
 ### herdr-radar settings live outside this repo
 
