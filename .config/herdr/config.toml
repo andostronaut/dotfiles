@@ -73,6 +73,19 @@ type = "plugin_action"
 command = "persiyanov.reviewr.toggle"
 description = "reviewr: toggle review pane"
 
+# gh-checks: the current PR's CI, checks and merge state in a split pane, the
+# same toggled shape as reviewr. m for merge — prefix+p and prefix+shift+p are
+# herdr's previous_tab and rename_pane.
+#
+# Its README also offers a $ci_* block for [ui.sidebar.spaces]. Deliberately
+# NOT added: the pane carries everything except the sidebar glyphs, and that
+# table is one of the three the sidebar plugins kept fighting over.
+[[keys.command]]
+key = "prefix+m"
+type = "plugin_action"
+command = "herdr-gh-checks.show"
+description = "GH Checks: PR CI, checks and merge"
+
 # herdr-lazy manage pane. prefix+l is focus_pane_right, hence shift.
 [[keys.command]]
 key = "prefix+shift+l"

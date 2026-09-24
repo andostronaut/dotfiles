@@ -85,7 +85,7 @@ commented defaults with `herdr --default-config`.
 
 ## Herdr Plugins
 
-Three plugins, declared in
+Four plugins, declared in
 [plugins.list](.config/herdr/plugins/config/herdr-lazy/plugins.list) and pinned
 to commits in
 [plugins.lock](.config/herdr/plugins/config/herdr-lazy/plugins.lock). Both files
@@ -95,6 +95,7 @@ new machine.
 | Plugin | What it does |
 | --- | --- |
 | clauth | Multi-account Claude switcher, usage windows, auto-switch chain |
+| itisbryan/herdr-gh-checks | Current PR's CI, checks and merge state, in a pane |
 | herdr-lazy | Declarative plugin management, the two files above |
 | persiyanov.reviewr | Comment on the agent's diff and send it back |
 
@@ -113,6 +114,7 @@ Prefix is `ctrl+space`. Unlisted keys keep herdr's defaults.
 | --- | --- |
 | `prefix+a` | clauth: accounts, usage, auto-switch chain |
 | `prefix+d` | reviewr: toggle review pane (d for diff) |
+| `prefix+m` | gh-checks: PR CI, checks and merge (m for merge) |
 | `prefix+shift+l` | herdr-lazy: manage plugins |
 
 ### Using clauth
