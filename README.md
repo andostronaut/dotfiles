@@ -85,7 +85,7 @@ commented defaults with `herdr --default-config`.
 
 ## Herdr Plugins
 
-Four plugins, declared in
+Five plugins, declared in
 [plugins.list](.config/herdr/plugins/config/herdr-lazy/plugins.list) and pinned
 to commits in
 [plugins.lock](.config/herdr/plugins/config/herdr-lazy/plugins.lock). Both files
@@ -96,10 +96,11 @@ new machine.
 | --- | --- |
 | clauth | Multi-account Claude switcher, usage windows, auto-switch chain |
 | itisbryan/herdr-gh-checks | Current PR's CI, checks and merge state, in a pane |
+| jmarbutt.spaces-pr-status | GitHub PR state beside each branch in the spaces card |
 | herdr-lazy | Declarative plugin management, the two files above |
 | persiyanov.reviewr | Comment on the agent's diff and send it back |
 
-The sidebar is otherwise herdr's own. A run of plugins that each wanted a piece
+The agents card is herdr's own; the spaces card carries PR state. A run of plugins that each wanted a piece
 of it — usage meters, quota bars, PR state, CPU/RAM, a full agents-list
 replacement — were tried and removed; between them they fought over the same
 three tables, and the result was busier and less readable than the default.

@@ -158,6 +158,22 @@ allow_nested   = false             # allow launching herdr inside a herdr pane
 kitty_graphics = false             # experimental Kitty graphics for attached clients
 pane_history   = false             # persist pane screen history to session-history.json
 
+# Space rows. spaces-pr-status puts the branch's GitHub PR state next to it:
+#   $pr         glyph + number — ● open/passing ◐ running ⊗ failed ◌ draft
+#               ◆ merged ⊘ closed
+#   $pr_checks  passing/total, e.g. "✓ 12/12"
+#   $pr_review  approved / changes requested / review needed
+#   $pr_diff    added/removed, e.g. "+458 -15"
+# Tokens carry a TTL, so a row blanks rather than going stale if the poller
+# dies. Rows 1-2 are herdr's own defaults, kept.
+[ui.sidebar.spaces]
+row_gap = 0
+rows = [
+  ["state_icon", "workspace"],
+  ["branch", "git_status"],
+  ["$pr", "$pr_checks", "$pr_review"],
+]
+
 
 # clauth herdr plugin
 [[keys.command]]
