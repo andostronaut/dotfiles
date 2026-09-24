@@ -64,22 +64,6 @@ prefix = "ctrl+space"     # default is ctrl+b. herdr has no key-sequence syntax,
 # reload_config    = "prefix+shift+r"
 # new_worktree     = "prefix+shift+g"
 
-# ── Plugin keybindings ───────────────────────────────────────────────────────
-# usagebar registers real plugin actions, so those bind directly.
-# usagebar's own open-limits action hardcodes --direction right, so call the
-# CLI directly to get a split below instead.
-[[keys.command]]
-key = "prefix+shift+u"
-type = "shell"
-command = "herdr plugin pane open --plugin usagebar --entrypoint limits --placement split --direction down --focus"
-description = "Agent Usage: open limits pane below"
-
-[[keys.command]]
-key = "prefix+shift+m"
-type = "plugin_action"
-command = "usagebar.refresh"
-description = "Agent Usage: refresh sidebar meters"
-
 # reviewr: comment on the agent's diff and send it back. Its README suggests
 # cmd+r, prefix-based keeps it with the rest. d for diff; the slot came free
 # when token-dashboard was removed, and bare prefix+d is not a herdr default
@@ -96,41 +80,6 @@ key = "prefix+shift+l"
 type = "plugin_action"
 command = "herdr-lazy.manage"
 description = "herdr-lazy: manage plugins"
-
-# spaces-pr-status. The sidebar tokens update on their own, these are for the
-# board and for jumping to the PR.
-[[keys.command]]
-key = "prefix+shift+b"
-type = "plugin_action"
-command = "jmarbutt.spaces-pr-status.board"
-description = "PR: board of every space by PR state"
-
-[[keys.command]]
-key = "prefix+shift+o"
-type = "plugin_action"
-command = "jmarbutt.spaces-pr-status.open"
-description = "PR: open this space's pull request"
-
-[[keys.command]]
-key = "prefix+shift+c"
-type = "plugin_action"
-command = "jmarbutt.spaces-pr-status.checks"
-description = "PR: this space's checks"
-
-[[keys.command]]
-key = "prefix+shift+y"
-type = "plugin_action"
-command = "jmarbutt.spaces-pr-status.refresh"
-description = "PR: re-query GitHub, ignore caches"
-
-# space-usage. The sidebar $usage row is the main surface and needs no key;
-# this is the live overlay. A pane entrypoint rather than an action, so it goes
-# through the CLI. s for space usage — prefix+s alone is herdr's settings.
-[[keys.command]]
-key = "prefix+shift+s"
-type = "shell"
-command = "herdr plugin pane open --plugin ez-corp.space-usage --entrypoint dashboard --focus"
-description = "Space usage: live CPU/RAM overlay"
 
 # ── UI & sidebar ─────────────────────────────────────────────────────────────
 [ui]
@@ -156,38 +105,6 @@ show_agent_labels_on_pane_borders = true # label split panes with the detected a
 #   $limit     shortest limit window remaining, e.g. "5h 72%"
 #   $context   per-pane context use, e.g. "⛁ 13% (130k)"
 status_indicators = "symbols"
-[ui.sidebar.agents]
-row_gap = 0                          # 1 restores the old blank line between agents
-rows = [
-  ["state_icon", "$title"],
-  ["$provider", "$limit"],
-  ["$context"],
-]
-
-# Space rows. Rows 1-2 are herdr's defaults; row 3 is spaces-pr-status, which
-# puts GitHub PR state next to each branch:
-#   $pr         glyph + number, e.g. "● #10110" or "◆ #10129 MERGED"
-#               ● open/passing  ◐ running  ⊗ failed  ◌ draft  ◆ merged  ⊘ closed
-#   $pr_checks  passing/total
-#   $pr_review  approved, changes requested, review needed
-# Tokens carry a TTL of four poll intervals, so the row blanks rather than
-# going stale if the poller dies. A full row is ~32 columns, which fits the
-# 40-wide sidebar in the default compact style — the emoji style is
-# double-width and would need a wider sidebar.
-[ui.sidebar.spaces]
-row_gap = 0
-rows = [
-  ["state_icon", "workspace"],
-  ["branch", "git_status"],
-  ["$pr", "$pr_checks", "$pr_review"],
-  # --- added by ez-corp.space-usage (removed by `status-disable`) ---
-  ["$usage"],
-  # --- end ez-corp.space-usage ---
-]
-
-# ── Notifications ────────────────────────────────────────────────────────────
-# Great when you run background AI agents: get pinged when one finishes or needs
-# input. delivery: off | herdr (in-app toast) | terminal | system (OS notifier).
 [ui.toast]
 delivery      = "herdr"
 delay_seconds = 1                  # 0–3600; only fires if still in that state after the delay
@@ -230,6 +147,7 @@ allow_nested   = false             # allow launching herdr inside a herdr pane
 kitty_graphics = false             # experimental Kitty graphics for attached clients
 pane_history   = false             # persist pane screen history to session-history.json
 
+
 # clauth herdr plugin
 [[keys.command]]
 key = "prefix+a"
@@ -237,14 +155,6 @@ type = "plugin_action"
 command = "clauth.open"
 description = "clauth accounts"
 
-# clauth herdr plugin: `$clauth` renders the account each Claude Code pane burns.
-# rows_by_agent REPLACES rows for that agent rather than extending it, so
-# `clauth herdr install` writing its own three rows here would have dropped the
-# usagebar tokens above for Claude panes. This is the rows list from
-# [ui.sidebar.agents] with $clauth added beside $context.
+# clauth herdr plugin: `$clauth` renders the account each Claude Code pane burns
 [ui.sidebar.agents.rows_by_agent]
-claude = [
-  ["state_icon", "$title"],
-  ["$provider", "$limit"],
-  ["$context", "$clauth"],
-]
+claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent", "$clauth"]]

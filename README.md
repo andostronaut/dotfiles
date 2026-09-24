@@ -85,83 +85,71 @@ commented defaults with `herdr --default-config`.
 
 ## Herdr Plugins
 
-Seven plugins, declared in
+Four plugins, declared in
 [plugins.list](.config/herdr/plugins/config/herdr-lazy/plugins.list) and pinned
 to commits in
 [plugins.lock](.config/herdr/plugins/config/herdr-lazy/plugins.lock). Both files
 are symlinked into `~/.config/herdr`, so `herdr-lazy sync` rebuilds the set on a
-new machine. Several are Rust and build from source.
+new machine.
 
 | Plugin | What it does |
 | --- | --- |
 | clauth | Multi-account Claude switcher, usage windows, auto-switch chain |
-| ez-corp.space-usage | Live CPU and RAM per space, in the spaces card |
-| usagebar | Per-pane provider, limit, and context tokens |
-| jmarbutt.spaces-pr-status | GitHub PR state next to each branch |
-| persiyanov.reviewr | Comment on the agent's diff and send it back |
 | herdr-lazy | Declarative plugin management, the two files above |
+| persiyanov.reviewr | Comment on the agent's diff and send it back |
 | rjyo.window-title-sync | Terminal window title follows the pane |
+
+The sidebar is otherwise herdr's own. A run of plugins that each wanted a piece
+of it — usage meters, quota bars, PR state, CPU/RAM, a full agents-list
+replacement — were tried and removed; between them they fought over the same
+three tables, and the result was busier and less readable than the default.
+Only `$clauth` is added back, because it answers a question the sidebar cannot:
+which account a pane is spending.
 
 ### Keys
 
-Prefix is `ctrl+space`. These are set in
-[config.toml](.config/herdr/config.toml); unlisted keys keep herdr's defaults.
+Prefix is `ctrl+space`. Unlisted keys keep herdr's defaults.
 
 | Key | Does |
 | --- | --- |
 | `prefix+a` | clauth: accounts, usage, auto-switch chain |
-| `prefix+shift+u` | Agent Usage: limits pane below |
-| `prefix+shift+m` | Agent Usage: refresh sidebar meters |
 | `prefix+d` | reviewr: toggle review pane (d for diff) |
-| `prefix+shift+s` | Space usage: live CPU/RAM overlay |
 | `prefix+shift+l` | herdr-lazy: manage plugins |
-| `prefix+shift+b` | PR: board of every space by state |
-| `prefix+shift+o` | PR: open this space's pull request |
-| `prefix+shift+c` | PR: this space's checks |
-| `prefix+shift+y` | PR: re-query GitHub, ignore caches |
 
 ### Using clauth
 
 `prefix+a` opens the dashboard over whatever is running. Switch accounts with a
 keystroke inside it, `q` to quit. There is no separate account picker by design,
-and herdr allows one popup per session, so pressing the key while it is already
-up is a no-op rather than an error.
+and herdr allows one popup per session.
 
 That switches the *global* credentials. To pin one pane to one account:
 
 ```sh
 clauth start <profile>                   # claude in that profile's own CLAUDE_CONFIG_DIR
 clauth start <profile> -- --model haiku  # flags after -- go to claude
-clauth start --isolated <profile> -p < prompt.txt   # headless, no global memory or hooks
 ```
 
 `clauth login <name>` adds an account, `clauth list` shows them with usage.
-
-`$clauth` in the sidebar names the account each Claude pane is spending. A
-per-pane watcher republishes it every few seconds because an account swap fires
-no herdr event — without that timer the tag goes stale the moment you switch.
-
-The plugin's own knobs (popup width, tag refresh, border label) are in the
-dashboard's Plugin tab and persist to `~/.clauth/profiles.toml`, not to herdr's
-config, so they never show up as a dirty file here.
+`$clauth` in the sidebar names the account each Claude pane is spending.
 
 ### Two things that bite
 
-**Some plugins ship their own installer, and `herdr plugin install` alone
-leaves them half-wired.** `clauth herdr install` writes the keybinding and the
-sidebar row that a herdr plugin cannot declare for itself. Install without it
-and it looks like it worked while rendering nothing. herdr also runs plugin
-actions in the server's own environment, so a plugin's options have to travel
-through files in `$(herdr plugin config-dir <id>)` rather than through `env`.
+**Plugins that write herdr's config replace the symlink instead of writing
+through it.** `clauth herdr install`, and every plugin that edits
+`config.toml`, can turn `~/.config/herdr/config.toml` into a regular file,
+silently detaching it from this repo — edits here then do nothing and
+`git status` looks clean while the live file differs. The same has happened to
+`~/.claude/settings.json`. Check with `ls -la`, and restore with:
 
-**`rows_by_agent` replaces `rows` for that agent rather than extending it.**
-`clauth herdr install` writes a `rows_by_agent.claude` template whose default
-drops usagebar's tokens. The row in [config.toml](.config/herdr/config.toml) is
-merged by hand — re-check it after running that installer again.
+```sh
+cp ~/.config/herdr/config.toml .config/herdr/config.toml   # adopt its writes
+rm ~/.config/herdr/config.toml
+ln -s "$PWD/.config/herdr/config.toml" ~/.config/herdr/config.toml
+```
 
 **Check what a plugin actually publishes before trusting it.** `herdr pane get
-<pane_id>` lists the pane's tokens; a plugin writing none is doing nothing for
-you no matter how its sidebar rows are configured.
+<pane_id>` lists that pane's tokens; a plugin writing none is doing nothing for
+you however its rows are configured.
 
 ## Shared Themes
 

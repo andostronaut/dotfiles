@@ -208,6 +208,7 @@
     ]
   },
   "env": {},
+  "feedbackDrafts": "off",
   "attribution": {
     "commit": "",
     "pr": "",
