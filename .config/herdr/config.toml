@@ -21,18 +21,19 @@ onboarding = false
 # Built-in names include: kanagawa, catppuccin, catppuccin-latte, tokyo-night,
 # nord, dracula, and "terminal" (follow your host terminal's ANSI palette).
 # Full list: search theme.name in the config reference.
-name = "catppuccin"
+name = "vesper"
 
 # Follow the host terminal's light/dark appearance and swap theme automatically.
-# When enabled, herdr uses light_name / dark_name (or the theme's built-in
-# light/dark sibling if those are unset). Manual selection in Settings disables it.
-# rose-pine is the first theme here whose light sibling exists everywhere:
-# rose-pine-dawn, Ghostty's "Rose Pine Dawn" and base46's rosepine-dawn.
-# Still off because NvChad does not follow the terminal appearance, so
-# flipping herdr and Ghostty alone would leave Neovim dark.
+# vesper is dark only, so there is nothing to switch to.
 auto_switch = false
 # light_name = "catppuccin-latte"
-# dark_name  = "catppuccin"
+
+# dark_name is NOT decoration: herdr-radar's applyAppearance rewrites
+# `name` on every configure and every light/dark flip, reading it from
+# dark_name and falling back to a hardcoded "catppuccin" when it is unset.
+# That fallback is how this file silently ended up on catppuccin. Setting it
+# here is what makes vesper stick.
+dark_name = "vesper"
 
 # Override individual color tokens on top of the base theme (hex / named / rgb()).
 # [theme.custom]

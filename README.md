@@ -203,7 +203,13 @@ you however its rows are configured.
 ## Shared Themes
 
 Herdr, Ghostty and Neovim each have to be told the theme separately, and each
-names it differently. All three are on `rose-pine` today.
+names it differently. All three are on `vesper` today.
+
+herdr-radar rewrites herdr's `[theme] name` on every `configure` and every
+light/dark flip, taking it from `dark_name` and falling back to a hardcoded
+`catppuccin` when that is unset — which is how herdr silently drifted off the
+shared theme once already. `dark_name` in
+[config.toml](.config/herdr/config.toml) is what pins it.
 
 | Tool | File | Key |
 | --- | --- | --- |

@@ -42,7 +42,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 # # Theme
-theme = Rose Pine
+theme = Vesper
 
 # herdr-radar draws its vendor logos and state marks from Private Use Area
 # codepoints. With no font-family set, ghostty took text from its default font
